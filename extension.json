@@ -1,0 +1,69 @@
+{
+	"name": "UnifiedTaskOverview",
+	"version": "",
+	"license-name": "GPL-3.0-only",
+	"author": [
+		"[http://www.hallowelt.com Hallo Welt! GmbH]"
+	],
+	"url": "http://www.hallowelt.com",
+	"descriptionmsg": "unifiedtaskoverview-desc",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
+	"attributes": {
+		"UnifiedTaskOverview": {
+			"AttentionIndicatorCollectionRegistry": []
+		},
+		"BlueSpiceDiscovery": {
+			"AttentionIndicatorRegistry": {
+				"taskoverview": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\AttentionIndicator\\TaskOverview::factory"
+			}
+		}
+	},
+	"MessagesDirs": {
+		"UnifiedTaskOverview": "i18n"
+	},
+	"ExtensionMessagesFiles": {
+		"UnifiedTaskOverviewAlias": "UnifiedTaskOverview.i18n.alias.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\UnifiedTaskOverview\\": "src/",
+		"MediaWiki\\Extension\\UnifiedTaskOverview\\Tests\\": "tests/phpunit"
+	},
+	"SpecialPages": {
+		"UnifiedTaskOverview": "MediaWiki\\Extension\\UnifiedTaskOverview\\Special\\UnifiedTaskOverview"
+	},
+	"ResourceModules": {
+		"ext.unifiedTaskOverview.specialPage": {
+			"packageFiles": [
+				"specialPage/init.js",
+				"specialPage/Tiles.vue",
+				"specialPage/SingleTile.vue"
+			],
+			"messages": [
+				"unifiedtaskoverview-label-no-task"
+			],
+			"dependencies": [
+				"vue",
+				"mediawiki.misc-authed-ooui",
+				"mediawiki.widgets.SearchInputWidget"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "UnifiedTaskOverview/resources"
+	},
+	"Hooks": {
+		"PersonalUrls": "MediaWiki\\Extension\\UnifiedTaskOverview\\Setup::onPersonalUrls"
+	},
+	"RestRoutes": [
+		{
+			"path": "/unifiedtaskoverview/list",
+			"method": "GET",
+			"class": "MediaWiki\\Extension\\UnifiedTaskOverview\\Rest\\ListHandler",
+			"services": [ "HookContainer" ]
+		}
+	],
+	"manifest_version": 2
+}
