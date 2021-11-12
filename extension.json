@@ -27,8 +27,7 @@
 		"UnifiedTaskOverviewAlias": "UnifiedTaskOverview.i18n.alias.php"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\UnifiedTaskOverview\\": "src/",
-		"MediaWiki\\Extension\\UnifiedTaskOverview\\Tests\\": "tests/phpunit"
+		"MediaWiki\\Extension\\UnifiedTaskOverview\\": "src/"
 	},
 	"SpecialPages": {
 		"UnifiedTaskOverview": "MediaWiki\\Extension\\UnifiedTaskOverview\\Special\\UnifiedTaskOverview"
