@@ -47,7 +47,7 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	 *
 	 * @inheritDoc
 	 */
-	public function getType() : string {
+	public function getType(): string {
 		return $this->type;
 	}
 
@@ -55,7 +55,7 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	 *
 	 * @inheritDoc
 	 */
-	public function getURL() : string {
+	public function getURL(): string {
 		return $this->url;
 	}
 
@@ -63,7 +63,7 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	 *
 	 * @inheritDoc
 	 */
-	public function getHeader() : Message {
+	public function getHeader(): Message {
 		return $this->headerMsg;
 	}
 
@@ -71,7 +71,7 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	 *
 	 * @inheritDoc
 	 */
-	public function getSubHeader() : Message {
+	public function getSubHeader(): Message {
 		return $this->subheaderMsg;
 	}
 
@@ -79,7 +79,7 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	 *
 	 * @inheritDoc
 	 */
-	public function getBody() : Message {
+	public function getBody(): Message {
 		return $this->bodyMsg;
 	}
 
