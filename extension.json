@@ -24,7 +24,7 @@
 		"UnifiedTaskOverview": "i18n"
 	},
 	"ExtensionMessagesFiles": {
-		"UnifiedTaskOverviewAlias": "UnifiedTaskOverview.i18n.alias.php"
+		"UnifiedTaskOverviewAlias": "languages/UnifiedTaskOverview.i18n.alias.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\UnifiedTaskOverview\\": "src/"

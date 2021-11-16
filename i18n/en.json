@@ -1,5 +1,11 @@
 {
-	"unifiedtaskoverview-desc": "English description of UnifiedTaskOverview",
+	"@metadata": {
+		"authors": [
+			"Miriam Schlindwein",
+			"Patric Wirth"
+		]
+	},
+	"unifiedtaskoverview-desc": "Provides a special page with an overview of the users tasks",
 	"unifiedtaskoverview": "My tasks",
 	"unifiedtaskoverview-label-no-task": "Currently there are no tasks to be completed.",
 	"unifiedtaskoverview-personal-url-my-tasks": "Tasks"

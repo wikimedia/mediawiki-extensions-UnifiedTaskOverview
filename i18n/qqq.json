@@ -1,6 +1,12 @@
 {
-	"unifiedtaskoverview-desc": "Description of UnifiedTaskOverview for [[Special:Version]]",
-	"unifiedtaskoverview": "My tasks",
-	"unifiedtaskoverview-label-no-task": "No task description",
-	"unifiedtaskoverview-personal-url-my-tasks": "Label for the UTO personal URL"
+	"@metadata": {
+		"authors": [
+			"Miriam Schlindwein",
+			"Patric Wirth"
+		]
+	},
+	"unifiedtaskoverview-desc": "{{desc|name=UnifiedTaskOverview}}",
+	"unifiedtaskoverview": "Special page name for [[Special:UnifiedTaskOverview]] special page.\n{{Identical|My tasks}}",
+	"unifiedtaskoverview-label-no-task": "Text that shows when the user does not have open tasks",
+	"unifiedtaskoverview-personal-url-my-tasks": "Label for the link in the personal urls that leads to the the specialpage [[Special:UnifiedTaskOverview]].\n{{Identical|Tasks}}"
 }
