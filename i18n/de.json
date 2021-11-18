@@ -1,4 +1,7 @@
 {
+	"@metadata": {
+		"authors": []
+	},
 	"unifiedtaskoverview-desc": "Deutsche Beschreibung von UnifiedTaskOverview",
 	"unifiedtaskoverview": "Meine Aufgaben",
 	"unifiedtaskoverview-label-no-task": "Aktuell sind keine Aufgaben zu erledigen.",

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"unifiedtaskoverview-desc": "Дава службена страница со преглед на задачи на корисниците",
+	"unifiedtaskoverview": "Мои задачи",
+	"unifiedtaskoverview-label-no-task": "Засега нема задачи за извршување.",
+	"unifiedtaskoverview-personal-url-my-tasks": "Задачи"
+}
