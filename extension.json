@@ -40,7 +40,8 @@
 				"specialPage/SingleTile.vue"
 			],
 			"messages": [
-				"unifiedtaskoverview-label-no-task"
+				"unifiedtaskoverview-label-no-task",
+				"unifiedtaskoverview-search-placeholder"
 			],
 			"dependencies": [
 				"vue",

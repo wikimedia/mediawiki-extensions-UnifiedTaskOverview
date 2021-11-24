@@ -24,13 +24,13 @@ class UnifiedTaskOverview extends SpecialPage {
 
 		$output->enableOOUI();
 		$search = Html::openElement( 'div', [
-			'style' => 'width: 100%; text-align: center;'
+			'style' => 'width: 100%; text-align: center; margin-top:1rem;'
 		] );
 		$search .= new TextInputWidget( [
 			'infusable' => true,
 			'id' => 'taskSearch',
 			'icon' => 'search',
-			'placeholder' => 'Search',
+			'placeholder' => $this->msg( 'unifiedtaskoverview-search-placeholder' )->text(),
 		] );
 		$search .= Html::closeElement( 'div' );
 		$output->addHTML( $search );
