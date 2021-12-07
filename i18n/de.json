@@ -3,5 +3,8 @@
 	"unifiedtaskoverview": "Meine Aufgaben",
 	"unifiedtaskoverview-label-no-task": "Aktuell sind keine Aufgaben zu erledigen.",
 	"unifiedtaskoverview-personal-url-my-tasks": "Aufgaben",
-	"unifiedtaskoverview-search-placeholder": "Suche"
+	"unifiedtaskoverview-search-placeholder": "Suche",
+	"@metadata": {
+		"authors": []
+	}
 }
