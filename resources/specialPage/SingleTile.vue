@@ -34,9 +34,10 @@
 .uto-tile {
 	position: relative;
 	word-wrap: break-word;
-	background-color: #f8f9fa;
+	background-color: #e9e9ee;
 	margin: 1.16%;
 	width: 31%;
+	border-radius: 5px;
 	a {
 		text-decoration: none !important;
 	}
@@ -72,7 +73,10 @@
 		}
 	}
 }
-.uto-tile:hover a{
+.uto-tile:hover {
+	background-color: darken( #e9e9ee, 5% );
+}
+.uto-tile:hover a {
 	text-decoration: none;
 	cursor: pointer;
 }
