@@ -105,4 +105,9 @@
 	color: black;
 	font-size: 0.9em;
 }
+@media ( max-width: 768px ) {
+	.uto-tile{
+		width: 100%;
+	}
+}
 </style>
