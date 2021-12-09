@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\UnifiedTaskOverview\Special;
 
 use Html;
-use OOUI\TextInputWidget;
+use OOUI\SearchInputWidget;
 use SpecialPage;
 
 class UnifiedTaskOverview extends SpecialPage {
@@ -26,7 +26,7 @@ class UnifiedTaskOverview extends SpecialPage {
 		$search = Html::openElement( 'div', [
 			'style' => 'width: 100%; text-align: center; margin-top:1rem;'
 		] );
-		$search .= new TextInputWidget( [
+		$search .= new SearchInputWidget( [
 			'infusable' => true,
 			'id' => 'taskSearch',
 			'icon' => 'search',

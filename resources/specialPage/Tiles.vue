@@ -41,6 +41,7 @@ ul {
 }
 .ul-tiles {
 	margin-top: 2rem;
+	margin-left: 0;
 	display: flex;
 	flex-flow: row wrap;
 	position: relative;
@@ -48,15 +49,15 @@ ul {
 
 .list-enter,
 .list-leave-to {
-visibility: hidden;
-height: 0;
-margin: 0;
-padding: 0;
-opacity: 0;
+	visibility: hidden;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
 }
 
 .list-enter-active,
 .list-leave-active {
-transition: all ease-out 250ms;
+	transition: all ease-out 250ms;
 }
 </style>
