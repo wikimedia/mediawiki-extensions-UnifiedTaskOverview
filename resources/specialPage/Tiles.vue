@@ -1,7 +1,10 @@
 <template>
 	<div id="unifiedTaskOverview-tiles" class="task-overview">
 		<hr>
-		<p v-if="noTaskDesc">{{ $i18n( 'unifiedtaskoverview-label-no-task' ) }}</p>
+		<div class="no-tasks" v-if="noTaskDesc">
+			<p>{{ $i18n( 'unifiedtaskoverview-label-no-task' ) }}</p>
+			<div class="notasks-icon"></div>
+		</div>
 		<ul class="ul-tiles">
 			<transition appear name="list" v-for="item in items" v-bind:key="item.id">
 				<single-tile
@@ -59,5 +62,18 @@ ul {
 .list-enter-active,
 .list-leave-active {
 	transition: all ease-out 250ms;
+}
+div.no-tasks {
+	width: 100;
+	text-align: center;
+}
+.notasks-icon {
+	background-image: url('../images/Icon_notasks.svg');
+	width: 80px;
+	height: 80px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 80px;
+	margin: 1rem auto 0 auto;
 }
 </style>
