@@ -20,6 +20,7 @@
 			}
 		}
 	},
+	"callback": "mwsInitComponents",
 	"MessagesDirs": {
 		"UnifiedTaskOverview": "i18n"
 	},
