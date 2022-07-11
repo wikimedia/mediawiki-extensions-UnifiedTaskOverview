@@ -3,7 +3,7 @@
 ## Installation
 Execute
 
-    composer require hallowelt/unifiedtaskoverview dev-REL1_31
+    composer require mediawiki/unified-task-overview ~1
 within MediaWiki root or add `hallowelt/unifiedtaskoverview` to the
 `composer.json` file of your project
 
