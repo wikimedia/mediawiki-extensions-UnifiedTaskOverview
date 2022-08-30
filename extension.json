@@ -44,6 +44,7 @@
 				"unifiedtaskoverview-label-no-task",
 				"unifiedtaskoverview-search-placeholder"
 			],
+			"es6": true,
 			"dependencies": [
 				"vue",
 				"mediawiki.misc-authed-ooui",
