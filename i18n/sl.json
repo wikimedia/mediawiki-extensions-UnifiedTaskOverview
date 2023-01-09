@@ -4,5 +4,9 @@
 			"Eleassar"
 		]
 	},
-	"unifiedtaskoverview-search-placeholder": "Iskanje"
+	"unifiedtaskoverview-search-placeholder": "Iskanje",
+	"unifiedtaskoverview-desc": "Zagotovi posebno stran s pregledom opravil uporabnikov",
+	"unifiedtaskoverview": "Moja opravila",
+	"unifiedtaskoverview-label-no-task": "Trenutno ni razpoložljivih opravil.",
+	"unifiedtaskoverview-personal-url-my-tasks": "Opravila"
 }
