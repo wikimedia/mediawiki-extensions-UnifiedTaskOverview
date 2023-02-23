@@ -56,8 +56,13 @@
 		"localBasePath": "resources",
 		"remoteExtPath": "UnifiedTaskOverview/resources"
 	},
+	"HookHandlers": {
+		"setup": {
+			"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\HookHandler\\SkinTemplateNavigation\\Setup"
+		}
+	},
 	"Hooks": {
-		"PersonalUrls": "MediaWiki\\Extension\\UnifiedTaskOverview\\Setup::onPersonalUrls"
+		"SkinTemplateNavigation::Universal": "setup"
 	},
 	"RestRoutes": [
 		{
