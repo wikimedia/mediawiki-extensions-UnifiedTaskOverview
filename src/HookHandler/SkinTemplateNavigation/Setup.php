@@ -11,10 +11,11 @@ class Setup implements SkinTemplateNavigation__UniversalHook {
 	 * @inheritDoc
 	 */
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
-		if ( !isset( $links['mytasks'] ) ) {
+		$user = $sktemplate->getUser();
+		if ( !$user->isRegistered() ) {
 			return;
 		}
-		$links['mytasks'] = [
+		$links['user-menu']['mytasks'] = [
 			"text" => $sktemplate->msg( 'unifiedtaskoverview-personal-url-my-tasks' )->text(),
 			"href" => \SpecialPage::getTitleFor( 'UnifiedTaskOverview' )->getLocalURL(),
 			"active" => false,

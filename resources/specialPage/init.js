@@ -1,51 +1,31 @@
 var Vue = require( 'vue' ),
-    Tiles = require( './Tiles.vue' ),
-	taskSearch = OO.ui.infuse( '#taskSearch' ),
-	itemData = [],
-	dataSearch = [],
-	searchInput = [],
+	Tiles = require( './Tiles.vue' ),
 	$allRLModules = [];
 
-// eslint-disable-next-line no-new
-var vm = new Vue( {
-    el: '#unifiedTaskOverview-tiles',
-    render: function ( h ) {
-        return h( Tiles );
-    }
-
-} );
-
-taskSearch.on( 'change', function ( value ) {
-	getSearchResults( value.toLowerCase() );
-} );
-
-var dfd = $.Deferred();
-$.ajax( {
-	url: mw.util.wikiScript( 'rest' ) + '/unifiedtaskoverview/list',
-	contentType: "application/json",
-	dataType: 'json'
-} ).done( function( response ) {
-	if ( response.length > 0 ) {
-		loadData( response );
-	}
-	else {
-		vm.$children[ 0 ].noTaskDesc = true;
-	}
-} ).fail ( function ( jgXHR, type, status ) {
-	if ( type === 'error' ) {
-		return dfd.reject( {
-			error: jgXHR.responseJSON || jgXHR.responseText
-		} );
-	}
-	return dfd.reject( { type: type, status: status } );
-} );
+function getList() {
+	var dfd = $.Deferred();
+	$.ajax( {
+		url: mw.util.wikiScript( 'rest' ) + '/unifiedtaskoverview/list',
+		contentType: "application/json",
+		dataType: 'json'
+	} ).done( function( response ) {
+		dfd.resolve( response );
+	} ).fail ( function ( jgXHR, type, status ) {
+		if ( type === 'error' ) {
+			dfd.reject( {
+				error: jgXHR.responseJSON || jgXHR.responseText
+			} );
+		}
+		dfd.reject( { type: type, status: status } );
+	} );
+	return dfd.promise();
+}
 
 function loadData( response) {
 	loadRLModules( response );
-	itemData = sortItems( response );
-	setDataForSearch( itemData );
+	var itemData = sortItems( response );
 	setVisibility( itemData );
-	setItems( itemData );
+	return itemData;
 }
 
 function sortItems( data ) {
@@ -71,16 +51,14 @@ function loadRLModules ( data ) {
 	mw.loader.using( $allRLModules );
 }
 
-function setItems ( items ) {
-	vm.$children[ 0 ].items = items;
-}
-
-function setDataForSearch ( items ){
+function setDataForSearch ( items ) {
+	var dataSearch = [];
 	items.forEach( function ( item )  {
 		dataSearch.push( item.type.toLowerCase() + " "
 			+ item.header.toLowerCase() + " " + item.subheader.toLowerCase() + " "
 			+ item.body.toLowerCase() );
 	});
+	return dataSearch;
 }
 
 function setVisibility ( items ) {
@@ -89,34 +67,36 @@ function setVisibility ( items ) {
 	});
 }
 
-function getSearchResults ( searchStr ) {
-	found = 1;
-	if ( searchStr !== '' && searchStr !== false ) {
-		if ( searchStr.search( ' ' ) !== -1 ) {
-			searchInput = searchStr.split( " " );
-		} else  {
-			searchInput[ 0 ] = searchStr;
-		}
-
-		for ( let x = 0; x < dataSearch.length; x++ ) {
-			for (let y = 0; y < searchInput.length; y++ ) {
-				if ( dataSearch[x].search( searchInput[y] )  === -1 ) {
-					found = 0;
+function render() {
+	var deferred = $.Deferred();
+	var dfdList = getList();
+	dfdList.done( function( response ) {
+		var h = Vue.h;
+		var vm = Vue.createMwApp( {
+			mounted: function () {
+				deferred.resolve( this.$el );
+			},
+			render: function () {
+				var listItems = [];
+				var searchElts = [];
+				var noTasks = true;
+				if ( response.length > 0 ) {
+					listItems = loadData( response );
+					searchElts = setDataForSearch( itemData );
+					noTasks = false;
 				}
+
+				return h( Tiles, {
+					elements: listItems,
+					searchElements: searchElts,
+					noTaskDesc: noTasks,
+					searchPlaceholderLabel: mw.message( 'unifiedtaskoverview-search-placeholder' ).plain()
+				} );
 			}
-			if ( found === 0 ) {
-				itemData[x].isVisible = false;
-			} else {
-				itemData[x].isVisible = true;
-			}
-			found = 1;
-		}
-	}
-	else {
-		itemData.forEach( function ( item )  {
-			item.isVisible = true;
-			searchInput = [];
-		});
-	}
-	setItems( itemData );
+		} );
+		vm.mount( '#unifiedTaskOverview-tiles');
+		return deferred;
+	} );
 }
+
+render();
