@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\UnifiedTaskOverview\Special;
 
 use Html;
-use OOUI\SearchInputWidget;
 use SpecialPage;
 
 class UnifiedTaskOverview extends SpecialPage {
@@ -23,17 +22,6 @@ class UnifiedTaskOverview extends SpecialPage {
 		$output->addModules( 'ext.unifiedTaskOverview.specialPage' );
 
 		$output->enableOOUI();
-		$search = Html::openElement( 'div', [
-			'style' => 'width: 100%; text-align: center; margin-top:1rem;'
-		] );
-		$search .= new SearchInputWidget( [
-			'infusable' => true,
-			'id' => 'taskSearch',
-			'icon' => 'search',
-			'placeholder' => $this->msg( 'unifiedtaskoverview-search-placeholder' )->text(),
-		] );
-		$search .= Html::closeElement( 'div' );
-		$output->addHTML( $search );
 		$output->addHTML( Html::element( 'div', [ 'id' => 'unifiedTaskOverview-tiles' ] ) );
 		$this->setHeaders();
 	}
