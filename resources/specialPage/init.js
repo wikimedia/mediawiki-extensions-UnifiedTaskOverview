@@ -79,17 +79,15 @@ function render() {
 			render: function () {
 				var listItems = [];
 				var searchElts = [];
-				var noTasks = true;
 				if ( response.length > 0 ) {
 					listItems = loadData( response );
-					searchElts = setDataForSearch( itemData );
-					noTasks = false;
+					searchElts = setDataForSearch( listItems );
 				}
 
 				return h( Tiles, {
-					elements: listItems,
+					items: listItems,
 					searchElements: searchElts,
-					noTaskDesc: noTasks,
+					noTaskDesc: listItems.length == 0,
 					searchPlaceholderLabel: mw.message( 'unifiedtaskoverview-search-placeholder' ).plain()
 				} );
 			}
