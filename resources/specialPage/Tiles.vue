@@ -122,7 +122,7 @@ ul {
 	transition: all ease-out 250ms;
 }
 div.no-tasks {
-	width: 100;
+	width: 100%;
 	text-align: center;
 }
 .notasks-icon {
