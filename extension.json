@@ -1,6 +1,6 @@
 {
 	"name": "UnifiedTaskOverview",
-	"version": "1.1.0-alpha",
+	"version": "2.0.0",
 	"license-name": "GPL-3.0-only",
 	"author": [
 		"[http://www.hallowelt.com Hallo Welt! GmbH]"
@@ -8,7 +8,7 @@
 	"url": "https://en.wiki.bluespice.com/wiki/Reference:UnifiedTaskOverview",
 	"descriptionmsg": "unifiedtaskoverview-desc",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"attributes": {
 		"UnifiedTaskOverview": {
