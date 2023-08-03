@@ -4,8 +4,8 @@
 			<div class="tile-header">
 				<div class="icn-cnt" v-bind:class="'task-' + type" ></div>
 				<div class="tile-header-content">
-					<div id="task-header" class="">{{header}}</div>
-					<div id="task-subheader" class="">{{subheader}}</div>
+					<div id="task-header" class="" v-html="header"></div>
+					<div id="task-subheader" class="" v-html="subheader"></div>
 				</div>
 			</div>
 			<div class="act-container">

@@ -40,7 +40,7 @@ class ListHandler extends SimpleHandler {
 		foreach ( $taskDescs as $taskDesc ) {
 			$responseData[] = [
 				'type' => $taskDesc->getType(),
-				'header' => $taskDesc->getHeader()->plain(),
+				'header' => $taskDesc->getHeader()->parse(),
 				'subheader' => $taskDesc->getSubHeader()->text(),
 				'body' => $taskDesc->getBody()->parse(),
 				'url' => $taskDesc->getURL(),
