@@ -1,5 +1,5 @@
 <template>
-	<div id="unifiedTaskOverview-tiles" class="task-overview">
+	<div class="task-overview">
 		<cdx-search-input
 			:clearable="true"
 			:placeholder="searchPlaceholderLabel"
