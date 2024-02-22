@@ -4,12 +4,12 @@
 			<div class="tile-header">
 				<div class="icn-cnt" v-bind:class="'task-' + type" ></div>
 				<div class="tile-header-content">
-					<div id="task-header" class="">{{header}}</div>
-					<div id="task-subheader" class="">{{subheader}}</div>
+					<div class="task-header" v-html="header"></div>
+					<div class="task-subheader" v-html="subheader"></div>
 				</div>
 			</div>
 			<div class="act-container">
-				<div id="task-body" class="" v-html="body"></div>
+				<div class="task-body" v-html="body"></div>
 			</div>
 		</div>
 	</a></div>
@@ -85,7 +85,7 @@
 	text-decoration: underline;
 }
 
-#task-body {
+.task-body {
 	line-height: 1.2;
 	color: #54595d;
 	font-size: 0.9em;
@@ -95,14 +95,14 @@
 	}
 }
 
-#task-header {
+.task-header {
 	width: 100%;
 	font-weight: bold;
 	line-height: 1.5;
 	padding: 5px 5px 0 5px;
 	color: black;
 }
-#task-subheader {
+.task-subheader {
 	width: 100%;
 	line-height: 1.2;
 	padding: 0 5px 5px 5px;
