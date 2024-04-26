@@ -3,6 +3,7 @@
 		<cdx-search-input
 			:clearable="true"
 			:placeholder="searchPlaceholderLabel"
+			:aria-label="searchPlaceholderLabel"
 			@update:model-value="getSearchResults"
 		></cdx-search-input>
 		<div class="no-tasks" v-if="noTaskDesc">
