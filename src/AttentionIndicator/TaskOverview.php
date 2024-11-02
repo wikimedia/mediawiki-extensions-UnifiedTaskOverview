@@ -40,8 +40,8 @@ class TaskOverview extends Collection {
 	 * @return IAttentionIndicator
 	 */
 	public static function factory( string $key, Config $config, User $user,
-		MediaWikiServices $services, AttentionIndicatorFactory $attentionIndicatorFactory = null,
-		IRegistry $registry = null ) {
+		MediaWikiServices $services, ?AttentionIndicatorFactory $attentionIndicatorFactory = null,
+		?IRegistry $registry = null ) {
 		if ( !$attentionIndicatorFactory ) {
 			$attentionIndicatorFactory = $services->getService( 'BSAttentionIndicatorFactory' );
 		}
