@@ -5,8 +5,8 @@ namespace MediaWiki\Extension\UnifiedTaskOverview\Rest;
 use MediaWiki\Extension\UnifiedTaskOverview\ITaskDescriptor;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\User\User;
 use RequestContext;
-use User;
 
 class ListHandler extends SimpleHandler {
 

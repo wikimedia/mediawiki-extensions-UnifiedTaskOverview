@@ -7,8 +7,8 @@ use BlueSpice\Discovery\AttentionIndicatorFactory;
 use BlueSpice\Discovery\IAttentionIndicator;
 use Config;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use MWStake\MediaWiki\Component\ManifestRegistry\IRegistry;
-use User;
 
 class TaskOverview extends Collection {
 
