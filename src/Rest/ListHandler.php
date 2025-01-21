@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\UnifiedTaskOverview\Rest;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\UnifiedTaskOverview\ITaskDescriptor;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\User;
-use RequestContext;
 
 class ListHandler extends SimpleHandler {
 
