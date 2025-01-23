@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\UnifiedTaskOverview\AttentionIndicator;
 use BlueSpice\Discovery\AttentionIndicator\Collection;
 use BlueSpice\Discovery\AttentionIndicatorFactory;
 use BlueSpice\Discovery\IAttentionIndicator;
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use MWStake\MediaWiki\Component\ManifestRegistry\IRegistry;
