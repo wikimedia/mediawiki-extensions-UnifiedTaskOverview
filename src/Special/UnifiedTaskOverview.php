@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\UnifiedTaskOverview\Special;
 
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class UnifiedTaskOverview extends SpecialPage {
