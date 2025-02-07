@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\UnifiedTaskOverview;
 
+use MediaWiki\Language\RawMessage;
 use MediaWiki\Message\Message;
-use RawMessage;
 
 class SimpleTaskDescriptor implements ITaskDescriptor {
 	/** @var string */
