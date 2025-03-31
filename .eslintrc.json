@@ -5,8 +5,8 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
-	"globals": {},
 	"rules": {
-		"no-implicit-globals": "off"
+		"no-implicit-globals": "off",
+		"no-jquery/no-done-fail": "warn"
 	}
 }
