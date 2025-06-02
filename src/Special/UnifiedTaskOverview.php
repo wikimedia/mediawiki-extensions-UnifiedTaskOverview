@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\UnifiedTaskOverview\Special;
 
 use MediaWiki\Html\Html;
-use MediaWiki\SpecialPage\SpecialPage;
+use OOJSPlus\Special\OOJSCardSpecialPage;
 
-class UnifiedTaskOverview extends SpecialPage {
+class UnifiedTaskOverview extends OOJSCardSpecialPage {
 
 	/**
 	 */
@@ -16,13 +16,11 @@ class UnifiedTaskOverview extends SpecialPage {
 	/**
 	 * @param string $par
 	 */
-	public function execute( $par ) {
+	public function doExecute( $par ) {
 		$this->requireNamedUser( 'unifiedtaskoverview-no-login-text' );
 		$output = $this->getOutput();
 
 		$output->addModules( 'ext.unifiedTaskOverview.specialPage' );
-
-		$output->enableOOUI();
 		$output->addHTML( Html::element( 'div', [ 'id' => 'unifiedTaskOverview-tiles' ] ) );
 		$this->setHeaders();
 	}
