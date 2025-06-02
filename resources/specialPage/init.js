@@ -92,6 +92,9 @@ function render() {
 				} );
 			}
 		} );
+		if ( $( document ).find( '#oojsplus-skeleton-cnt' ) ) {
+			$( '#oojsplus-skeleton-cnt' ).empty(); // eslint-disable-line no-jquery/no-global-selector
+		}
 		vm.mount( '#unifiedTaskOverview-tiles' );
 		return deferred;
 	} );
