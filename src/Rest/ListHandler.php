@@ -11,13 +11,11 @@ use MediaWiki\User\User;
 class ListHandler extends SimpleHandler {
 
 	/**
-	 *
 	 * @var HookContainer
 	 */
 	private $hookContainer = null;
 
 	/**
-	 *
 	 * @param HookContainer $hookContainer
 	 */
 	public function __construct( $hookContainer ) {
@@ -25,7 +23,6 @@ class ListHandler extends SimpleHandler {
 	}
 
 	/**
-	 *
 	 * @return void
 	 */
 	public function run() {
@@ -53,7 +50,6 @@ class ListHandler extends SimpleHandler {
 	}
 
 	/**
-	 *
 	 * @return User
 	 */
 	private function getContextUser() {

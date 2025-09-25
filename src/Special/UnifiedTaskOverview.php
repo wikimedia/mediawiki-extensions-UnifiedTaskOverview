@@ -7,8 +7,6 @@ use OOJSPlus\Special\OOJSCardSpecialPage;
 
 class UnifiedTaskOverview extends OOJSCardSpecialPage {
 
-	/**
-	 */
 	public function __construct() {
 		parent::__construct( 'UnifiedTaskOverview' );
 	}
