@@ -15,7 +15,8 @@
 	},
 	"attributes": {
 		"UnifiedTaskOverview": {
-			"AttentionIndicatorCollectionRegistry": []
+			"AttentionIndicatorCollectionRegistry": [],
+			"TaskDescriptorRegistry": []
 		},
 		"BlueSpiceDiscovery": {
 			"AttentionIndicatorRegistry": {
@@ -33,6 +34,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\UnifiedTaskOverview\\": "src/"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"SpecialPages": {
 		"UnifiedTaskOverview": "MediaWiki\\Extension\\UnifiedTaskOverview\\Special\\UnifiedTaskOverview"
 	},
@@ -61,17 +65,21 @@
 	"HookHandlers": {
 		"setup": {
 			"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\HookHandler\\SkinTemplateNavigation\\Setup"
+		},
+		"runDatabaseUpdates": {
+			"class": "MediaWiki\\Extension\\UnifiedTaskOverview\\HookHandler\\LoadExtensionSchemaUpdates\\RunDatabaseUpdates"
 		}
 	},
 	"Hooks": {
-		"SkinTemplateNavigation::Universal": "setup"
+		"SkinTemplateNavigation::Universal": "setup",
+		"LoadExtensionSchemaUpdates": "runDatabaseUpdates"
 	},
 	"RestRoutes": [
 		{
 			"path": "/unifiedtaskoverview/list",
 			"method": "GET",
 			"class": "MediaWiki\\Extension\\UnifiedTaskOverview\\Rest\\ListHandler",
-			"services": [ "HookContainer" ]
+			"services": [ "UserFactory", "ConnectionProvider" ]
 		}
 	],
 	"manifest_version": 2
