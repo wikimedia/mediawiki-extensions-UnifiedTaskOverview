@@ -1,0 +1,82 @@
+[
+	{
+		"name": "uto_usertasks",
+		"columns": [
+			{
+				"name": "uto_id",
+				"type": "integer",
+				"options": {
+					"unsigned": true,
+					"notnull": true,
+					"autoincrement": true
+				}
+			},
+			{
+				"name": "uto_page_id",
+				"type": "integer",
+				"options": {
+					"unsigned": true,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_user_id",
+				"type": "integer",
+				"options": {
+					"unsigned": true,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_type",
+				"type": "binary",
+				"options": {
+					"length": 64,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_key",
+				"type": "binary",
+				"options": {
+					"length": 128,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_wiki_id",
+				"type": "binary",
+				"options": {
+					"length": 64,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_page_title",
+				"type": "binary",
+				"options": {
+					"length": 255,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "uto_unique",
+				"columns": [
+					"uto_user_id",
+					"uto_type",
+					"uto_key",
+					"uto_wiki_id"
+				],
+				"unique": true
+			},
+			{
+				"name": "uto_user_lookup",
+				"columns": [ "uto_user_id" ],
+				"unique": false
+			}
+		],
+		"pk": [ "uto_id" ]
+	}
+]
