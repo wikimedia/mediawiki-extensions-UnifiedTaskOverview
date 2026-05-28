@@ -21,7 +21,7 @@ class Setup implements SkinTemplateNavigation__UniversalHook {
 			"href" => SpecialPage::getTitleFor( 'UnifiedTaskOverview' )->getLocalURL(),
 			"active" => false,
 			'data' => [ 'attentionindicator' => 'taskoverview' ],
-			'position' => 10,
+			'position' => 200,
 		];
 	}
 }
