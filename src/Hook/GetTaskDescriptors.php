@@ -8,7 +8,6 @@ use MediaWiki\User\User;
 interface GetTaskDescriptors {
 
 	/**
-	 *
 	 * @param ITaskDescriptor[] &$descriptors
 	 * @param User $user
 	 * @return void

@@ -44,7 +44,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getType(): string {
@@ -52,7 +51,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getURL(): string {
@@ -60,7 +58,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getHeader(): Message {
@@ -68,7 +65,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getSubHeader(): Message {
@@ -76,7 +72,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getBody(): Message {
@@ -84,7 +79,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getSortKey(): int {
@@ -92,7 +86,6 @@ class SimpleTaskDescriptor implements ITaskDescriptor {
 	}
 
 	/**
-	 *
 	 * @inheritDoc
 	 */
 	public function getRLModules(): array {
