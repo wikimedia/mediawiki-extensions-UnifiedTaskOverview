@@ -12,5 +12,7 @@
 	"unifiedtaskoverview-label-no-task": "Text that shows when the user does not have open tasks",
 	"unifiedtaskoverview-personal-url-my-tasks": "Label for the link in the personal urls that leads to the specialpage [[Special:UnifiedTaskOverview]].\n{{Identical|Tasks}}",
 	"unifiedtaskoverview-search-placeholder": "Placeholder label for search\n\n{{Identical|Search}}",
-	"unifiedtaskoverview-no-login-text": "Showed on Special:Userlogin when user tries to access their tasks before logging in"
+	"unifiedtaskoverview-no-login-text": "Showed on Special:Userlogin when user tries to access their tasks before logging in",
+	"unifiedtaskoverview-filter-all": "Label for the \"All\" option in the wiki filter widget on [[Special:UnifiedTaskOverview]].",
+	"unifiedtaskoverview-filter-wikis-section-label": "Section label for wiki instance filter"
 }

@@ -13,8 +13,6 @@
 		"stylelint-config-wikimedia": "0.19.3"
 	},
 	"eslintIgnore": [
-		"resources/specialPage/SingleTile.vue",
-		"resources/specialPage/Tiles.vue",
 		"vendor/**"
 	]
 }

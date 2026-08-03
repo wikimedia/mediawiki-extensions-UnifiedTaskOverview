@@ -8,6 +8,10 @@
 	"parserOptions": {
 		"sourceType": "commonjs"
 	},
+	"globals": {
+		"ext": "readonly",
+		"OOJSPlus": "readonly"
+	},
 	"rules": {
 		"no-jquery/no-done-fail": "warn",
 		"no-jquery/no-internal-array-methods": "warn"

@@ -1,6 +1,4 @@
-var Vue = require( 'vue' ); // eslint-disable-line no-var
-var Tiles = require( './Tiles.vue' ); // eslint-disable-line no-var
-var $allRLModules = []; // eslint-disable-line no-var
+require( './TileListWidget.js' );
 
 function getList() {
 	const dfd = $.Deferred();
@@ -10,10 +8,10 @@ function getList() {
 		dataType: 'json'
 	} ).done( ( response ) => {
 		dfd.resolve( response );
-	} ).fail( ( jgXHR, type, status ) => {
+	} ).fail( ( jqXHR, type, status ) => {
 		if ( type === 'error' ) {
 			dfd.reject( {
-				error: jgXHR.responseJSON || jgXHR.responseText
+				error: jqXHR.responseJSON || jqXHR.responseText
 			} );
 		}
 		dfd.reject( { type: type, status: status } );
@@ -21,82 +19,50 @@ function getList() {
 	return dfd.promise();
 }
 
-function loadData( response ) {
-	loadRLModules( response );
-	const itemData = sortItems( response );
-	setVisibility( itemData );
-	return itemData;
-}
-
 function sortItems( data ) {
-	data = data.sort( ( a, b ) => a.sortkey - b.sortkey );
-	return data;
+	return data.sort( ( a, b ) => a.sortkey - b.sortkey );
 }
 
-// get RLModules from data
 function loadRLModules( data ) {
-	for ( let x = 0; x < data.length; x++ ) {
-		data[ x ].RLmodules.forEach( ( item ) => {
-			if ( $allRLModules.length === 0 ) {
-				$allRLModules.push( item );
-			} else {
-				$allRLModules.forEach( ( module ) => {
-					if ( module !== item ) {
-						$allRLModules.push( item );
-					}
-				} );
+	const modules = [];
+	data.forEach( ( item ) => {
+		item.RLmodules.forEach( ( module ) => {
+			// eslint-disable-next-line es-x/no-array-prototype-includes
+			if ( !modules.includes( module ) ) {
+				modules.push( module );
 			}
 		} );
+	} );
+	if ( modules.length > 0 ) {
+		mw.loader.using( modules );
 	}
-	mw.loader.using( $allRLModules );
-}
-
-function setDataForSearch( items ) {
-	const dataSearch = [];
-	items.forEach( ( item ) => {
-		dataSearch.push( item.type.toLowerCase() + ' ' +
-			item.header.toLowerCase() + ' ' + item.subheader.toLowerCase() + ' ' +
-			item.body.toLowerCase() );
-	} );
-	return dataSearch;
-}
-
-function setVisibility( items ) {
-	items.forEach( ( item ) => {
-		item.isVisible = true;
-	} );
 }
 
 function render() {
-	const deferred = $.Deferred();
-	const dfdList = getList();
-	dfdList.done( ( response ) => {
-		const h = Vue.h;
-		const vm = Vue.createMwApp( {
-			mounted: function () {
-				deferred.resolve( this.$el );
-			},
-			render: function () {
-				let listItems = [];
-				let searchElts = [];
-				if ( response.length > 0 ) {
-					listItems = loadData( response );
-					searchElts = setDataForSearch( listItems );
-				}
+	getList().done( ( response ) => {
+		const items = response.length > 0 ? sortItems( response ) : [];
+		if ( items.length > 0 ) {
+			loadRLModules( items );
+		}
 
-				return h( Tiles, {
-					items: listItems,
-					searchElements: searchElts,
-					noTaskDesc: listItems.length == 0, // eslint-disable-line eqeqeq
-					searchPlaceholderLabel: mw.message( 'unifiedtaskoverview-search-placeholder' ).plain()
-				} );
+		const tileList = new ext.unifiedTaskOverview.ui.TileListWidget( { items: items } );
+
+		const filterData = tileList.buildFilterData();
+		const filterWidget = new OOJSPlus.ui.widget.FilterWidget( {} );
+		filterWidget.loadData( filterData, 'all' );
+		filterWidget.connect( filterWidget, {
+			selectItem: ( key ) => {
+				tileList.applyFilter( key );
 			}
 		} );
-		if ( $( document ).find( '#oojsplus-skeleton-cnt' ) ) {
-			$( '#oojsplus-skeleton-cnt' ).empty(); // eslint-disable-line no-jquery/no-global-selector
+		if ( filterData.length === 0 || filterData[ 1 ].items.length <= 1 ) {
+			filterWidget.toggle( false );
 		}
-		vm.mount( '#unifiedTaskOverview-tiles' );
-		return deferred;
+
+		$( '#oojsplus-skeleton-cnt' ).empty(); // eslint-disable-line no-jquery/no-global-selector
+		$( '#unifiedTaskOverview-tiles' ) // eslint-disable-line no-jquery/no-global-selector
+			.append( filterWidget.$element )
+			.append( tileList.$element );
 	} );
 }
 

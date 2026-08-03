@@ -63,20 +63,14 @@ class ListHandler extends SimpleHandler {
 
 		$responseData = [];
 		foreach ( $res as $row ) {
-			$isRootWiki = ( $row->uto_wiki_id === '' || $row->uto_wiki_id === 'w' );
-
 			$class = $this->resolveTaskDescriptorClass( $registry, $row->uto_type );
 			if ( !$class ) {
 				continue;
 			}
 
-			if ( $isRootWiki ) {
-				/** @var ITaskDescriptor */
-				$taskDescriptor = $class::newFromTaskRow( $row );
-				if ( !$taskDescriptor ) {
-					continue;
-				}
-
+			/** @var ITaskDescriptor */
+			$taskDescriptor = $class::newFromTaskRow( $row );
+			if ( $taskDescriptor ) {
 				$responseData[] = [
 					'type' => $taskDescriptor->getType(),
 					'header' => $taskDescriptor->getHeader()->parse(),
@@ -89,11 +83,7 @@ class ListHandler extends SimpleHandler {
 				];
 			} else {
 				$title = Title::newFromDBkey( $row->uto_page_title );
-				$instancePath = $this->resolveInstancePath( $row->uto_wiki_id );
-				$url = wfScript( 'index' ) . '?' . http_build_query( [
-					'title' => $title ? $title->getPrefixedText() : $row->uto_page_title,
-					'sfr' => $instancePath
-				] );
+				$url = $title->getLocalURL();
 
 				$responseData[] = [
 					'type' => $row->uto_type,
@@ -107,6 +97,9 @@ class ListHandler extends SimpleHandler {
 				];
 			}
 		}
+
+		$hookContainer = $this->getHookContainer();
+		$hookContainer->run( 'UnifiedTaskOverviewTaskCollectionComplete', [ &$responseData ] );
 
 		return $this->getResponseFactory()->createJson( $responseData );
 	}
@@ -127,23 +120,4 @@ class ListHandler extends SimpleHandler {
 
 		return null;
 	}
-
-	/**
-	 * Resolve a wiki identifier to the instance path used for sfr routing
-	 *
-	 * @param string $wikiId
-	 * @return string
-	 */
-	private function resolveInstancePath( string $wikiId ): string {
-		$services = MediaWikiServices::getInstance();
-		if ( $services->hasService( 'BlueSpiceWikiFarm.WikiMap' ) ) {
-			$farmWikiMap = $services->getService( 'BlueSpiceWikiFarm.WikiMap' );
-			$instance = $farmWikiMap->getInstanceByWikiId( $wikiId );
-			if ( $instance ) {
-				return $instance->getPath();
-			}
-		}
-		return $wikiId;
-	}
-
 }
