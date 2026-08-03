@@ -44,17 +44,20 @@
 		"ext.unifiedTaskOverview.specialPage": {
 			"packageFiles": [
 				"specialPage/init.js",
-				"specialPage/Tiles.vue",
-				"specialPage/SingleTile.vue"
+				"specialPage/TileWidget.js",
+				"specialPage/TileListWidget.js"
+			],
+			"styles": [
+				"specialPage/specialPage.less"
 			],
 			"messages": [
 				"unifiedtaskoverview-label-no-task",
-				"unifiedtaskoverview-search-placeholder"
+				"unifiedtaskoverview-search-placeholder",
+				"unifiedtaskoverview-filter-all",
+				"unifiedtaskoverview-filter-wikis-section-label"
 			],
 			"dependencies": [
-				"vue",
-				"mediawiki.misc-authed-ooui",
-				"@wikimedia/codex"
+				"ext.oOJSPlus.widgets"
 			]
 		}
 	},

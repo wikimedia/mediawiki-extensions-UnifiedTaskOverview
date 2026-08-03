@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\UnifiedTaskOverview;
 
 use MediaWiki\User\User;
+use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 class TaskStore {
@@ -23,7 +24,7 @@ class TaskStore {
 		$userId = $user->getId();
 		$type = $descriptor->getType();
 		$key = $descriptor->getUniqueKey();
-		$wikiId = defined( 'FARMER_CALLED_INSTANCE' ) ? FARMER_CALLED_INSTANCE : '';
+		$wikiId = WikiMap::getCurrentWikiId();
 		$pageTitle = $descriptor->getTitle()->getPrefixedDBkey();
 
 		if ( $isCompleted ) {

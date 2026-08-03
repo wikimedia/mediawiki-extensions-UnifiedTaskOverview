@@ -8,6 +8,9 @@
 	"parserOptions": {
 		"sourceType": "commonjs"
 	},
-	"globals": {},
+	"globals": {
+		"ext": "readonly",
+		"OOJSPlus": "readonly"
+	},
 	"rules": {}
 }

@@ -1,0 +1,136 @@
+@import 'mediawiki.skin.variables.less';
+
+#unifiedTaskOverview-tiles {
+	display: flex;
+	justify-content: space-between;
+}
+
+#unifiedTaskOverview-tiles .oojsplus-ui-widget-filter-widget {
+	width: 23%;
+}
+
+#unifiedTaskOverview-tiles .task-overview {
+	width: 76%;
+}
+
+.uto-tile {
+	position: relative;
+	word-wrap: break-word;
+	background-color: @background-color-interactive-subtle;
+	margin: 1.16%;
+	width: 31%;
+	border-left: 4px solid transparent;
+
+	a {
+		text-decoration: none !important;
+	}
+
+	.tile-content {
+		padding: @spacing-100 @spacing-100;
+		word-wrap: break-word;
+		display: flex;
+		flex-flow: row wrap;
+
+		.tile-header {
+			display: table;
+
+			.icn-cnt {
+				display: table-cell;
+				margin: 0 0;
+				padding: 0;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 24px;
+				vertical-align: top;
+				width: 24px;
+				height: 24px;
+				background-image: url( ../images/task.svg );
+			}
+
+			.tile-header-content {
+				display: table-cell;
+				padding-left: 5px;
+			}
+		}
+
+		.act-container {
+			display: block;
+			padding: @spacing-50;
+			width: 100%;
+		}
+	}
+}
+
+// should use variable background-color-interactive-subtle--hover
+// not available in REL1_43
+.uto-tile:hover {
+	background-color: #eaecf0;
+}
+
+.uto-tile:hover a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.uto-tile:hover .task-header {
+	text-decoration: underline;
+}
+
+.task-body {
+	line-height: 1.2;
+	color: @color-subtle;
+	font-size: @font-size-x-small;
+	padding-top: @spacing-50 0;
+
+	ul {
+		margin-left: 0;
+
+		li {
+			list-style-type: none;
+		}
+	}
+}
+
+.task-header {
+	width: 100%;
+	font-weight: bold;
+	padding: 0 @spacing-25;
+	color: @color-base;
+}
+
+.task-subheader {
+	width: 100%;
+	padding: 0 @spacing-25 @spacing-25;
+	color: @color-base;
+	font-size: @font-size-small;
+}
+
+@media ( max-width: 768px ) {
+	.uto-tile {
+		width: 100%;
+	}
+}
+
+// Tile list
+.ul-tiles {
+	display: flex;
+	flex-flow: row wrap;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+div.no-tasks {
+	width: 100%;
+	text-align: center;
+}
+
+.notasks-icon {
+	background-image: url( ../images/Icon_notasks.svg );
+	width: 40px;
+	height: 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 40px;
+	margin: 1rem auto 0 auto;
+}
