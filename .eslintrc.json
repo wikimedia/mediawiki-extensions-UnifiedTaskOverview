@@ -8,7 +8,6 @@
 	"parserOptions": {
 		"sourceType": "commonjs"
 	},
-	"globals": {},
 	"rules": {
 		"no-jquery/no-done-fail": "warn"
 	}
