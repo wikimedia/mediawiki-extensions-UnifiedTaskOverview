@@ -10,5 +10,18 @@
 	"unifiedtaskoverview-personal-url-my-tasks": "Aufgaben",
 	"unifiedtaskoverview-search-placeholder": "Suche",
 	"unifiedtaskoverview-no-login-text": "Bitte melde dich an, um deine Aufgaben sehen zu können",
-	"unifiedtaskoverview-filter-wikis-section-label": "Wikis"
+	"unifiedtaskoverview-filter-wikis-section-label": "Wikis",
+	"unifiedtaskoverview-mytasks-title": "Meine Aufgaben",
+	"unifiedtaskoverview-mytasks-desc": "Zeigt alle Aufgaben, die dem angemeldeten Benutzer zugewiesen sind.",
+	"unifiedtaskoverview-mytasks-empty": "Keine Aufgaben gefunden.",
+	"unifiedtaskoverview-mytasks-anon": "Bitte melde dich an, um deine Aufgaben sehen zu können.",
+	"unifiedtaskoverview-mytasks-error": "Die Aufgaben konnten nicht geladen werden.",
+	"unifiedtaskoverview-mytasks-column-type": "Typ",
+	"unifiedtaskoverview-mytasks-column-page": "Seite",
+	"unifiedtaskoverview-mytasks-column-namespace": "Namensraum",
+	"unifiedtaskoverview-mytasks-column-description": "Beschreibung",
+	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
+	"unifiedtaskoverview-mytasks-type-workflows": "Workflow",
+	"unifiedtaskoverview-mytasks-type-tasks": "Aufgabe",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Lese-Bestätigung"
 }

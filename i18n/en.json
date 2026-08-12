@@ -12,5 +12,18 @@
 	"unifiedtaskoverview-search-placeholder": "Search",
 	"unifiedtaskoverview-no-login-text": "Please login to see your tasks",
 	"unifiedtaskoverview-filter-all": "Everything",
-	"unifiedtaskoverview-filter-wikis-section-label": "Wikis"
+	"unifiedtaskoverview-filter-wikis-section-label": "Wikis",
+	"unifiedtaskoverview-mytasks-title": "My tasks",
+	"unifiedtaskoverview-mytasks-desc": "Display all tasks the current user is assigned to.",
+	"unifiedtaskoverview-mytasks-empty": "There are no tasks to display.",
+	"unifiedtaskoverview-mytasks-anon": "Please log in to see your tasks.",
+	"unifiedtaskoverview-mytasks-error": "The tasks could not be loaded.",
+	"unifiedtaskoverview-mytasks-column-type": "Type",
+	"unifiedtaskoverview-mytasks-column-page": "Page",
+	"unifiedtaskoverview-mytasks-column-namespace": "Namespace",
+	"unifiedtaskoverview-mytasks-column-description": "Description",
+	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
+	"unifiedtaskoverview-mytasks-type-workflows": "Workflow",
+	"unifiedtaskoverview-mytasks-type-tasks": "Task",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Read confirmation"
 }

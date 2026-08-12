@@ -22,6 +22,13 @@
 			"AttentionIndicatorRegistry": {
 				"taskoverview": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\AttentionIndicator\\TaskOverview::factory"
 			}
+		},
+		"ContentDroplets": {
+			"Droplets": {
+				"mytasks": {
+					"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\ContentDroplets\\MyTasksDroplet"
+				}
+			}
 		}
 	},
 	"callback": "mwsInitComponents",
@@ -59,6 +66,34 @@
 			"dependencies": [
 				"ext.oOJSPlus.widgets"
 			]
+		},
+		"ext.unifiedTaskOverview.tag.mytasks": {
+			"scripts": [
+				"tag/MyTasksGrid.js",
+				"tag/init.js"
+			],
+			"messages": [
+				"unifiedtaskoverview-mytasks-empty",
+				"unifiedtaskoverview-mytasks-anon",
+				"unifiedtaskoverview-mytasks-error",
+				"unifiedtaskoverview-mytasks-column-type",
+				"unifiedtaskoverview-mytasks-column-page",
+				"unifiedtaskoverview-mytasks-column-namespace",
+				"unifiedtaskoverview-mytasks-column-description",
+				"unifiedtaskoverview-mytasks-column-instance",
+				"unifiedtaskoverview-mytasks-type-workflows",
+				"unifiedtaskoverview-mytasks-type-tasks",
+				"unifiedtaskoverview-mytasks-type-readconfirmation"
+			],
+			"dependencies": [
+				"ext.oOJSPlus.data",
+				"oojs-ui"
+			]
+		},
+		"ext.unifiedTaskOverview.tag.mytasks.styles": {
+			"styles": [
+				"tag/mytasks.less"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -71,11 +106,15 @@
 		},
 		"runDatabaseUpdates": {
 			"class": "MediaWiki\\Extension\\UnifiedTaskOverview\\HookHandler\\LoadExtensionSchemaUpdates\\RunDatabaseUpdates"
+		},
+		"registerTags": {
+			"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\HookHandler\\RegisterTags"
 		}
 	},
 	"Hooks": {
 		"SkinTemplateNavigation::Universal": "setup",
-		"LoadExtensionSchemaUpdates": "runDatabaseUpdates"
+		"LoadExtensionSchemaUpdates": "runDatabaseUpdates",
+		"MWStakeGenericTagHandlerInitTags": "registerTags"
 	},
 	"RestRoutes": [
 		{
