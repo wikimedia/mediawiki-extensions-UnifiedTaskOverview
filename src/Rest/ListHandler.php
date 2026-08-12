@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\UnifiedTaskOverview\Rest;
 
 use MediaWiki\Extension\UnifiedTaskOverview\ITaskDescriptor;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
@@ -79,7 +80,10 @@ class ListHandler extends SimpleHandler {
 					'url' => $taskDescriptor->getURL(),
 					'sortkey' => $taskDescriptor->getSortKey(),
 					'RLmodules' => $taskDescriptor->getRLModules(),
-					'wiki_id' => $row->uto_wiki_id
+					'wiki_id' => $row->uto_wiki_id,
+					'page_title' => $row->uto_page_title,
+					'page_name' => $this->getPageName( $row->uto_page_title ),
+					'namespace' => $this->getNamespaceText( $row->uto_page_title )
 				];
 			} else {
 				$title = Title::newFromDBkey( $row->uto_page_title );
@@ -93,7 +97,10 @@ class ListHandler extends SimpleHandler {
 					'url' => $url,
 					'sortkey' => 100,
 					'RLmodules' => [],
-					'wiki_id' => $row->uto_wiki_id
+					'wiki_id' => $row->uto_wiki_id,
+					'page_title' => $row->uto_page_title,
+					'page_name' => $this->getPageName( $row->uto_page_title ),
+					'namespace' => $this->getNamespaceText( $row->uto_page_title )
 				];
 			}
 		}
@@ -102,6 +109,47 @@ class ListHandler extends SimpleHandler {
 		$hookContainer->run( 'UnifiedTaskOverviewTaskCollectionComplete', [ &$responseData ] );
 
 		return $this->getResponseFactory()->createJson( $responseData );
+	}
+
+	/**
+	 * Name of the page a task belongs to, without its namespace.
+	 *
+	 * Most descriptors name the page in their header already, but not all of them do
+	 * (a task of SimpleTasks is headed by the task itself), so consumers listing tasks
+	 * by page need a name that does not depend on the descriptor.
+	 *
+	 * @param string $prefixedDBkey
+	 * @return string
+	 */
+	private function getPageName( string $prefixedDBkey ): string {
+		$title = Title::newFromDBkey( $prefixedDBkey );
+		if ( !$title ) {
+			return $prefixedDBkey;
+		}
+
+		return $title->getText();
+	}
+
+	/**
+	 * Namespace a task belongs to, as shown in the list of tasks.
+	 *
+	 * Tasks of other wikis of a farm are named with the namespaces of the current wiki,
+	 * since only their title is stored. Namespace IDs are shared across a farm, so this
+	 * only differs for namespaces that were renamed on a single instance.
+	 *
+	 * @param string $prefixedDBkey
+	 * @return string
+	 */
+	private function getNamespaceText( string $prefixedDBkey ): string {
+		$title = Title::newFromDBkey( $prefixedDBkey );
+		if ( !$title ) {
+			return '';
+		}
+		if ( $title->getNamespace() === NS_MAIN ) {
+			return Message::newFromKey( 'blanknamespace' )->text();
+		}
+
+		return $title->getNsText() ?: '';
 	}
 
 	/**

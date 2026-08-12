@@ -14,5 +14,18 @@
 	"unifiedtaskoverview-search-placeholder": "Placeholder label for search\n\n{{Identical|Search}}",
 	"unifiedtaskoverview-no-login-text": "Showed on Special:Userlogin when user tries to access their tasks before logging in",
 	"unifiedtaskoverview-filter-all": "Label for the \"All\" option in the wiki filter widget on [[Special:UnifiedTaskOverview]].",
-	"unifiedtaskoverview-filter-wikis-section-label": "Section label for wiki instance filter"
+	"unifiedtaskoverview-filter-wikis-section-label": "Section label for wiki instance filter",
+	"unifiedtaskoverview-mytasks-title": "Name of the <code>&lt;mytasks&gt;</code> tag, shown in the content droplet list and the tag inspector.\n{{Identical|My tasks}}",
+	"unifiedtaskoverview-mytasks-desc": "Description of the <code>&lt;mytasks&gt;</code> tag, shown in the content droplet list.",
+	"unifiedtaskoverview-mytasks-empty": "Shown by the <code>&lt;mytasks&gt;</code> tag if the user has no tasks.",
+	"unifiedtaskoverview-mytasks-anon": "Shown by the <code>&lt;mytasks&gt;</code> tag to anonymous users.",
+	"unifiedtaskoverview-mytasks-error": "Shown by the <code>&lt;mytasks&gt;</code> tag if the list of tasks could not be loaded.",
+	"unifiedtaskoverview-mytasks-column-type": "Header of the task type column of the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Type}}",
+	"unifiedtaskoverview-mytasks-column-page": "Header of the column linking to the page a task belongs to, in the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Page}}",
+	"unifiedtaskoverview-mytasks-column-namespace": "Header of the column showing the namespace of the page a task belongs to, in the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Namespace}}",
+	"unifiedtaskoverview-mytasks-column-description": "Header of the task description column of the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Description}}",
+	"unifiedtaskoverview-mytasks-column-instance": "Header of the column showing the wiki a task originates from, in the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Wiki}}",
+	"unifiedtaskoverview-mytasks-type-workflows": "Label of the task type \"workflow activity\" in the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Workflow}}",
+	"unifiedtaskoverview-mytasks-type-tasks": "Label of the task type \"simple task\" in the <code>&lt;mytasks&gt;</code> tag.\n{{Identical|Task}}",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Label of the task type \"read confirmation\" in the <code>&lt;mytasks&gt;</code> tag."
 }

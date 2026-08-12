@@ -1,0 +1,27 @@
+@import 'mediawiki.skin.variables.less';
+
+.ve-active .mwstake-components-generictaghandler-tag-mytasks > * {
+	visibility: hidden;
+}
+
+.uto-mytasks-notice {
+	color: @color-subtle;
+	font-style: italic;
+}
+
+.uto-mytasks-grid .wikifarm-wiki-badge {
+	margin-bottom: 0;
+}
+
+/* Fallback sign, used when BlueSpiceWikiFarm provides no badge */
+.uto-mytasks-instance {
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0.1rem 0.5rem;
+	font-size: @font-size-x-small;
+	color: @color-base;
+	border-left: 4px solid var( --wiki-color, @border-color-base );
+}
