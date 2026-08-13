@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"unifiedtaskoverview-desc": "Waxay bixisaa bog gaar ah oo leh dulmar ku saabsan hawlaha isticmaalaha",
+	"unifiedtaskoverview": "Hawlahayga",
+	"unifiedtaskoverview-label-no-task": "Hadda ma jiraan hawlo la dhammaystirayo.",
+	"unifiedtaskoverview-personal-url-my-tasks": "Hawlaha",
+	"unifiedtaskoverview-search-placeholder": "Raadi",
+	"unifiedtaskoverview-no-login-text": "Fadlan soo gal si aad u aragto hawlahaaga",
+	"unifiedtaskoverview-filter-all": "Wax walba",
+	"unifiedtaskoverview-filter-wikis-section-label": "Wikiyada",
+	"unifiedtaskoverview-mytasks-title": "Hawlahayga",
+	"unifiedtaskoverview-mytasks-desc": "Muuji dhammaan hawlaha isticmaalaha hadda loo xilsaaray.",
+	"unifiedtaskoverview-mytasks-empty": "Ma jiraan hawlo la soo bandhigayo.",
+	"unifiedtaskoverview-mytasks-anon": "Fadlan soo gal si aad u aragto hawlahaaga.",
+	"unifiedtaskoverview-mytasks-error": "Hawlaha lama soo dejin karin.",
+	"unifiedtaskoverview-mytasks-column-type": "Nooca",
+	"unifiedtaskoverview-mytasks-column-page": "Bogga",
+	"unifiedtaskoverview-mytasks-column-namespace": "Magac meel",
+	"unifiedtaskoverview-mytasks-column-description": "Sharaxaad",
+	"unifiedtaskoverview-mytasks-column-instance": "Wiki-ga",
+	"unifiedtaskoverview-mytasks-type-workflows": "Workflow",
+	"unifiedtaskoverview-mytasks-type-tasks": "Hawsha",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Xaqiijinta akhriska"
+}
