@@ -9,5 +9,20 @@
 	"unifiedtaskoverview-label-no-task": "Actualmente non hai tarefas por completar.",
 	"unifiedtaskoverview-personal-url-my-tasks": "Tarefas",
 	"unifiedtaskoverview-search-placeholder": "Procurar",
-	"unifiedtaskoverview-no-login-text": "Inicia sesión para ver as túas tarefas"
+	"unifiedtaskoverview-no-login-text": "Inicia sesión para ver as túas tarefas",
+	"unifiedtaskoverview-filter-all": "Todo",
+	"unifiedtaskoverview-filter-wikis-section-label": "Wikis",
+	"unifiedtaskoverview-mytasks-title": "As miñas tarefas",
+	"unifiedtaskoverview-mytasks-desc": "Mostrar todas as tarefas ás que está asignado o usuario actual.",
+	"unifiedtaskoverview-mytasks-empty": "Non hai tarefas para mostrar.",
+	"unifiedtaskoverview-mytasks-anon": "Inicia sesión para ver as túas tarefas.",
+	"unifiedtaskoverview-mytasks-error": "Non se puideron cargar as tarefas.",
+	"unifiedtaskoverview-mytasks-column-type": "Tipo",
+	"unifiedtaskoverview-mytasks-column-page": "Páxina",
+	"unifiedtaskoverview-mytasks-column-namespace": "Espazo de nomes",
+	"unifiedtaskoverview-mytasks-column-description": "Descrición",
+	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
+	"unifiedtaskoverview-mytasks-type-workflows": "Fluxo de traballo",
+	"unifiedtaskoverview-mytasks-type-tasks": "Tarefa",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Confirmación de lectura"
 }

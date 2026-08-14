@@ -4,5 +4,10 @@
 			"Abijeet Patro"
 		]
 	},
-	"unifiedtaskoverview-personal-url-my-tasks": "कार्य"
+	"unifiedtaskoverview-personal-url-my-tasks": "कार्य",
+	"unifiedtaskoverview-filter-all": "सब कुछ",
+	"unifiedtaskoverview-mytasks-column-type": "प्रकार",
+	"unifiedtaskoverview-mytasks-column-page": "पृष्ठ",
+	"unifiedtaskoverview-mytasks-column-namespace": "नामस्थान",
+	"unifiedtaskoverview-mytasks-type-tasks": "कार्य"
 }
