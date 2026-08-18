@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"unifiedtaskoverview-desc": "Biedt een speciale pagina met een overzicht van de taken van de gebruiker",
@@ -9,5 +10,20 @@
 	"unifiedtaskoverview-label-no-task": "Momenteel zijn er geen taken die moeten worden voltooid.",
 	"unifiedtaskoverview-personal-url-my-tasks": "Taken",
 	"unifiedtaskoverview-search-placeholder": "Zoeken",
-	"unifiedtaskoverview-no-login-text": "Meld u aan om uw taken te bekijken"
+	"unifiedtaskoverview-no-login-text": "Meld u aan om uw taken te bekijken",
+	"unifiedtaskoverview-filter-all": "Alles",
+	"unifiedtaskoverview-filter-wikis-section-label": "Wiki’s",
+	"unifiedtaskoverview-mytasks-title": "Mijn taken",
+	"unifiedtaskoverview-mytasks-desc": "Alle taken weergeven die aan de huidige gebruiker zijn toegewezen.",
+	"unifiedtaskoverview-mytasks-empty": "Er zijn geen taken om weer te geven.",
+	"unifiedtaskoverview-mytasks-anon": "Meld u aan om uw taken te bekijken.",
+	"unifiedtaskoverview-mytasks-error": "De taken konden niet worden geladen.",
+	"unifiedtaskoverview-mytasks-column-type": "Type",
+	"unifiedtaskoverview-mytasks-column-page": "Pagina",
+	"unifiedtaskoverview-mytasks-column-namespace": "Naamruimte",
+	"unifiedtaskoverview-mytasks-column-description": "Beschrijving",
+	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
+	"unifiedtaskoverview-mytasks-type-workflows": "Werkstroom",
+	"unifiedtaskoverview-mytasks-type-tasks": "Taak",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestiging"
 }
