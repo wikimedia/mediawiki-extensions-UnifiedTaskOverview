@@ -1,21 +1,28 @@
 [
 	{
-		"name": "uto_usertasks",
+		"name": "uto_tasks",
 		"columns": [
 			{
-				"name": "uto_id",
-				"type": "integer",
+				"name": "uto_task_id",
+				"type": "binary",
 				"options": {
-					"unsigned": true,
-					"notnull": true,
-					"autoincrement": true
+					"length": 128,
+					"notnull": true
 				}
 			},
 			{
-				"name": "uto_page_id",
+				"name": "uto_page_namespace",
 				"type": "integer",
 				"options": {
 					"unsigned": true,
+					"notnull": true
+				}
+			},
+			{
+				"name": "uto_page_title",
+				"type": "string",
+				"options": {
+					"length": 255,
 					"notnull": true
 				}
 			},
@@ -29,33 +36,31 @@
 			},
 			{
 				"name": "uto_type",
-				"type": "binary",
+				"type": "string",
 				"options": {
 					"length": 64,
 					"notnull": true
 				}
 			},
 			{
-				"name": "uto_key",
-				"type": "binary",
+				"name": "uto_since",
+				"type": "mwtimestamp",
 				"options": {
-					"length": 128,
 					"notnull": true
 				}
 			},
 			{
 				"name": "uto_wiki_id",
-				"type": "binary",
+				"type": "string",
 				"options": {
-					"length": 64,
+					"length": 255,
 					"notnull": true
 				}
 			},
 			{
-				"name": "uto_page_title",
-				"type": "binary",
+				"name": "uto_data",
+				"type": "text",
 				"options": {
-					"length": 255,
 					"notnull": true
 				}
 			}
@@ -63,12 +68,7 @@
 		"indexes": [
 			{
 				"name": "uto_unique",
-				"columns": [
-					"uto_user_id",
-					"uto_type",
-					"uto_key",
-					"uto_wiki_id"
-				],
+				"columns": [ "uto_task_id", "uto_wiki_id", "uto_user_id" ],
 				"unique": true
 			},
 			{
@@ -77,6 +77,6 @@
 				"unique": false
 			}
 		],
-		"pk": [ "uto_id" ]
+		"pk": []
 	}
 ]

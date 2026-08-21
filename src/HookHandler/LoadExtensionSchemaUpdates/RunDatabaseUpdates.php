@@ -17,8 +17,8 @@ class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 		$dir = dirname( __DIR__, 3 );
 
 		$updater->addExtensionTable(
-			'uto_usertasks',
-			"$dir/db/$dbType/uto_usertasks.sql"
+			'uto_tasks',
+			"$dir/db/$dbType/uto_tasks.sql"
 		);
 	}
 }
