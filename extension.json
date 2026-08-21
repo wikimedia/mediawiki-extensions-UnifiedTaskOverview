@@ -121,7 +121,7 @@
 			"path": "/unifiedtaskoverview/list",
 			"method": "GET",
 			"class": "MediaWiki\\Extension\\UnifiedTaskOverview\\Rest\\ListHandler",
-			"services": [ "UserFactory", "ConnectionProvider" ]
+			"services": [ "UnifiedTaskOverview.TaskStore", "ContentLanguage" ]
 		}
 	],
 	"manifest_version": 2

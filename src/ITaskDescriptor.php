@@ -4,11 +4,8 @@ namespace MediaWiki\Extension\UnifiedTaskOverview;
 
 use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
-use stdClass;
 
 interface ITaskDescriptor {
-
-	public static function newFromTaskRow( stdClass $row ): ?static;
 
 	/**
 	 * @return string
