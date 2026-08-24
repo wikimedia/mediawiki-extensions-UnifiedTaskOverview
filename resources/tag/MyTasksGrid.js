@@ -262,17 +262,26 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getNamespaces = function () {
 };
 
 /**
+ * Main wiki first, every other instance by its display name.
+ *
  * @return {Array} Distinct instances of all tasks, for the instance filter
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getInstances = function () {
 	const instances = [];
 	this.items.forEach( ( item ) => {
 		const name = item.source ? item.source.display_text : '';
-		// eslint-disable-next-line es-x/no-array-prototype-includes
-		if ( name && !instances.includes( name ) ) {
-			instances.push( name );
+		if ( name && !instances.some( ( instance ) => instance.name === name ) ) {
+			instances.push( { name: name, isRoot: !!item.source.is_root } );
 		}
 	} );
 
-	return instances;
+	instances.sort( ( a, b ) => {
+		if ( a.isRoot !== b.isRoot ) {
+			return a.isRoot ? -1 : 1;
+		}
+
+		return a.name.localeCompare( b.name, undefined, { numeric: true, sensitivity: 'base' } );
+	} );
+
+	return instances.map( ( instance ) => instance.name );
 };

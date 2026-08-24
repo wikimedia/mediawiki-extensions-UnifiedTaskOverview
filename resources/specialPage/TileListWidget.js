@@ -96,7 +96,25 @@ ext.unifiedTaskOverview.ui.TileListWidget.prototype.buildFilterData = function (
 
 	filterData.push( {
 		label: mw.message( 'unifiedtaskoverview-filter-wikis-section-label' ).plain(),
-		items: items
+		items: ext.unifiedTaskOverview.ui.TileListWidget.static.sortByInstance( items )
 	} );
 	return filterData;
+};
+
+/**
+ * Main wiki first, every other instance by its display name.
+ *
+ * @param {Array} items Filter items, each holding the wiki info of its instance in "attr"
+ * @return {Array} The same items, sorted
+ */
+ext.unifiedTaskOverview.ui.TileListWidget.static.sortByInstance = function ( items ) {
+	return items.sort( ( a, b ) => {
+		const aIsRoot = !!( a.attr && a.attr.is_root );
+		const bIsRoot = !!( b.attr && b.attr.is_root );
+		if ( aIsRoot !== bIsRoot ) {
+			return aIsRoot ? -1 : 1;
+		}
+
+		return ( a.label || '' ).localeCompare( b.label || '', undefined, { numeric: true, sensitivity: 'base' } );
+	} );
 };
