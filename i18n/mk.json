@@ -9,5 +9,20 @@
 	"unifiedtaskoverview-label-no-task": "Засега нема задачи за извршување.",
 	"unifiedtaskoverview-personal-url-my-tasks": "Задачи",
 	"unifiedtaskoverview-search-placeholder": "Пребарај",
-	"unifiedtaskoverview-no-login-text": "Најавете се за да ги видите вашите задачи"
+	"unifiedtaskoverview-no-login-text": "Најавете се за да ги видите вашите задачи",
+	"unifiedtaskoverview-filter-all": "Сè",
+	"unifiedtaskoverview-filter-wikis-section-label": "Викија",
+	"unifiedtaskoverview-mytasks-title": "Мои задачи",
+	"unifiedtaskoverview-mytasks-desc": "Прикажи ги сите задачи доделени на тековниот корисник.",
+	"unifiedtaskoverview-mytasks-empty": "Нема задачи за приказ.",
+	"unifiedtaskoverview-mytasks-anon": "Најавете се за да ги видите вашите задачи.",
+	"unifiedtaskoverview-mytasks-error": "Задачите не можат да се вчитаат.",
+	"unifiedtaskoverview-mytasks-column-type": "Вид",
+	"unifiedtaskoverview-mytasks-column-page": "Страница",
+	"unifiedtaskoverview-mytasks-column-namespace": "Именски простор",
+	"unifiedtaskoverview-mytasks-column-description": "Опис",
+	"unifiedtaskoverview-mytasks-column-instance": "Вики",
+	"unifiedtaskoverview-mytasks-type-workflows": "Работен тек",
+	"unifiedtaskoverview-mytasks-type-tasks": "Задача",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Потврда на читање"
 }

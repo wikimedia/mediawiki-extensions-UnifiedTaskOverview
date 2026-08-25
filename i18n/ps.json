@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"unifiedtaskoverview-desc": "يو ځانگړی مخ د کارنانو د کاردندو ټول‌کتنې سره يوځای چمتو کوي",
+	"unifiedtaskoverview": "زما کاردندې",
+	"unifiedtaskoverview-label-no-task": "وسمهال هېڅ داسې کاردندې نشته چې بشپړې شي.",
+	"unifiedtaskoverview-personal-url-my-tasks": "کاردندې",
+	"unifiedtaskoverview-search-placeholder": "پلټل",
+	"unifiedtaskoverview-no-login-text": "د خپلو کاردندو کتلو لپاره مهرباني وکړئ ننوځئ",
+	"unifiedtaskoverview-filter-all": "هرڅه",
+	"unifiedtaskoverview-filter-wikis-section-label": "ويکي‌گانې",
+	"unifiedtaskoverview-mytasks-title": "زما کاردندې",
+	"unifiedtaskoverview-mytasks-desc": "ټولې هغه کاردندې وښاياست چې اوسني کارن ته سپارل شوې دي.",
+	"unifiedtaskoverview-mytasks-empty": "ښودلو لپاره هېڅ کاردندې نشته.",
+	"unifiedtaskoverview-mytasks-anon": "د خپلو کاردندو کتلو لپاره مهرباني وکړئ ننوځئ.",
+	"unifiedtaskoverview-mytasks-error": "کاردندې نشي راپورته‌کېدی.",
+	"unifiedtaskoverview-mytasks-column-type": "ډول",
+	"unifiedtaskoverview-mytasks-column-page": "مخ",
+	"unifiedtaskoverview-mytasks-column-namespace": "نوم‌تشيال",
+	"unifiedtaskoverview-mytasks-column-description": "څرگنداوی",
+	"unifiedtaskoverview-mytasks-column-instance": "ويکي",
+	"unifiedtaskoverview-mytasks-type-workflows": "کاري‌بهير",
+	"unifiedtaskoverview-mytasks-type-tasks": "کاردنده",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "د لوستلو تاييد"
+}
