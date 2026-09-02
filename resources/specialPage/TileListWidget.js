@@ -49,6 +49,10 @@ ext.unifiedTaskOverview.ui.TileListWidget.prototype.onSearch = function ( value 
 			tile.toggle( this.activeFilter === 'all' || tile.taskData.wiki_id === this.activeFilter );
 			return;
 		}
+		if ( this.activeFilter !== 'all' && tile.taskData.wiki_id !== this.activeFilter ) {
+			tile.toggle( false );
+			return;
+		}
 		const text = [
 			tile.taskData.type,
 			tile.taskData.header,
