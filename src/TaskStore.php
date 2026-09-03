@@ -83,6 +83,23 @@ final class TaskStore {
 	}
 
 	/**
+	 * @param UserIdentity $forUser
+	 * @return int
+	 */
+	public function countTasksForUser( UserIdentity $forUser ): int {
+		return (int)$this->connectionProvider->getReplicaDatabase()->newSelectQueryBuilder()
+			->table( self::TABLE_NAME )
+			->fields( [
+				'COUNT(*) AS task_count'
+			] )
+			->where( [
+				'uto_user_id' => $forUser->getId()
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
+	}
+
+	/**
 	 * @param ITaskDescriptor $descriptor
 	 * @param UserIdentity $forUser
 	 * @return void

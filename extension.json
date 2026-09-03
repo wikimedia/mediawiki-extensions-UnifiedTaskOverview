@@ -15,7 +15,6 @@
 	},
 	"attributes": {
 		"UnifiedTaskOverview": {
-			"AttentionIndicatorCollectionRegistry": [],
 			"TaskDescriptorRegistry": []
 		},
 		"BlueSpiceDiscovery": {
