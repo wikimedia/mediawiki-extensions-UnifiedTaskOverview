@@ -2,32 +2,23 @@
 
 namespace MediaWiki\Extension\UnifiedTaskOverview\AttentionIndicator;
 
-use BlueSpice\Discovery\AttentionIndicator\Collection;
-use BlueSpice\Discovery\AttentionIndicatorFactory;
+use BlueSpice\Discovery\AttentionIndicator;
 use BlueSpice\Discovery\IAttentionIndicator;
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\UnifiedTaskOverview\TaskStore;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
-use MWStake\MediaWiki\Component\ManifestRegistry\IRegistry;
 
-class TaskOverview extends Collection {
-
-	/**
-	 * @var IRegistry
-	 */
-	protected $registry = null;
+class TaskOverview extends AttentionIndicator {
 
 	/**
 	 * @param string $key
 	 * @param Config $config
 	 * @param User $user
-	 * @param AttentionIndicatorFactory $attentionIndicatorFactory
-	 * @param IRegistry $registry
+	 * @param TaskStore $taskStore
 	 */
-	public function __construct( string $key, Config $config, User $user,
-		AttentionIndicatorFactory $attentionIndicatorFactory, IRegistry $registry ) {
-		parent::__construct( $key, $config, $user, $attentionIndicatorFactory );
-		$this->registry = $registry;
+	public function __construct( string $key, Config $config, User $user, private readonly TaskStore $taskStore ) {
+		parent::__construct( $key, $config, $user );
 	}
 
 	/**
@@ -35,28 +26,19 @@ class TaskOverview extends Collection {
 	 * @param Config $config
 	 * @param User $user
 	 * @param MediaWikiServices $services
-	 * @param AttentionIndicatorFactory|null $attentionIndicatorFactory
-	 * @param IRegistry|null $registry
 	 * @return IAttentionIndicator
 	 */
-	public static function factory( string $key, Config $config, User $user,
-		MediaWikiServices $services, ?AttentionIndicatorFactory $attentionIndicatorFactory = null,
-		?IRegistry $registry = null ) {
-		if ( !$attentionIndicatorFactory ) {
-			$attentionIndicatorFactory = $services->getService( 'BSAttentionIndicatorFactory' );
-		}
-		if ( !$registry ) {
-			$registry = $services->getService( 'MWStakeManifestRegistryFactory' )
-				->get( 'UnifiedTaskOverviewAttentionIndicatorCollectionRegistry' );
-		}
-		return new static( $key, $config, $user, $attentionIndicatorFactory, $registry );
+	public static function factory( string $key, Config $config, User $user, MediaWikiServices $services ) {
+		return new static(
+			$key, $config, $user,
+			$services->getService( 'UnifiedTaskOverview.TaskStore' ),
+		);
 	}
 
-	/**
-	 * @return string[]
-	 */
-	protected function getSubIndicatorKeys(): array {
-		return $this->registry->getAllValues();
+	protected function doIndicationCount(): int {
+		if ( !$this->user || $this->user->isAnon() ) {
+			return 0;
+		}
+		return $this->taskStore->countTasksForUser( $this->user );
 	}
-
 }
