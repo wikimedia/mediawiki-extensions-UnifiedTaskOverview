@@ -1,16 +1,3 @@
-mw.hook( 'ext.visualEditorPlus.tags.registerTags' ).add( ( registry ) => {
-	const originalCreateDm = registry.createDmForTag;
-	registry.createDmForTag = function ( definition ) {
-		originalCreateDm.call( this, definition );
-		if ( definition.classname === 'MyTasks' ) {
-			const classname = definition.classname + 'Node';
-			window.ext.visualEditorPlus.dm[ classname ].prototype.isEditable = function () {
-				return false;
-			};
-		}
-	};
-} );
-
 function getTasks() {
 	return $.ajax( {
 		url: mw.util.wikiScript( 'rest' ) + '/unifiedtaskoverview/list',
@@ -81,7 +68,14 @@ $( () => {
 		tasks = tasks || [];
 		loadTaskModules( tasks );
 		$containers.each( ( index, element ) => {
-			const grid = new ext.unifiedTaskOverview.ui.MyTasksGrid( { items: tasks } );
+			const types = ( $( element ).attr( 'data-types' ) || '' )
+				.split( ',' )
+				.map( ( type ) => type.trim() )
+				.filter( ( type ) => type !== '' );
+			const grid = new ext.unifiedTaskOverview.ui.MyTasksGrid( {
+				items: tasks,
+				types: types
+			} );
 			$( element ).append( grid.$element );
 		} );
 	} ).fail( () => {

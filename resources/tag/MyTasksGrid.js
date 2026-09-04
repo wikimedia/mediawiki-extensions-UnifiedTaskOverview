@@ -13,26 +13,30 @@ const TASK_TYPE = 'simple-tasks-task';
  * Labels for the known task types. Types are registered with a prefix, so the longest
  * matching prefix wins. Types of other extensions fall back to their technical key.
  *
+ * The "key" matches the values of the tag's "types" attribute, set through the inspector.
+ *
  * @type {Array}
  */
 const TYPE_LABELS = [
-	{ prefix: 'workflows-activity-', message: 'unifiedtaskoverview-mytasks-type-workflows' },
-	{ prefix: TASK_TYPE, message: 'unifiedtaskoverview-mytasks-type-tasks' },
-	{ prefix: 'page-read-confirmation', message: 'unifiedtaskoverview-mytasks-type-readconfirmation' }
+	{ key: 'workflow', prefix: 'workflows-activity-', message: 'unifiedtaskoverview-mytasks-type-workflows' },
+	{ key: 'task', prefix: TASK_TYPE, message: 'unifiedtaskoverview-mytasks-type-tasks' },
+	{ key: 'readconfirmation', prefix: 'page-read-confirmation', message: 'unifiedtaskoverview-mytasks-type-readconfirmation' }
 ];
 
 /**
  * List of all tasks of the current user, shown by the <mytasks> tag.
  *
  * @param {Object} cfg Config, "items" holds the tasks as delivered by the
- *  "unifiedtaskoverview/list" REST endpoint
+ *  "unifiedtaskoverview/list" REST endpoint, "types" the task type keys the list is
+ *  restricted to (empty: show all types)
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid = function ( cfg ) {
 	cfg = Object.assign( { padded: true, expanded: false }, cfg || {} );
 
 	ext.unifiedTaskOverview.ui.MyTasksGrid.parent.call( this, cfg );
 
-	this.items = cfg.items || [];
+	this.types = cfg.types || [];
+	this.items = ( cfg.items || [] ).filter( ( item ) => this.matchesType( item ) );
 	this.$element.addClass( 'uto-mytasks-grid' );
 
 	if ( this.items.length === 0 ) {
@@ -45,7 +49,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid = function ( cfg ) {
 
 	this.grid = new OOJSPlus.ui.data.GridWidget( {
 		style: 'differentiate-rows',
-		stateId: 'uto-mytasks-grid',
 		pageSize: 10,
 		columns: this.makeColumns(),
 		data: this.makeRows()
@@ -60,32 +63,7 @@ OO.inheritClass( ext.unifiedTaskOverview.ui.MyTasksGrid, OO.ui.PanelLayout );
  * @return {Object}
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeColumns = function () {
-	const columns = {
-		taskType: {
-			headerText: mw.message( 'unifiedtaskoverview-mytasks-column-type' ).text(),
-			type: 'text',
-			sortable: true,
-			filter: { type: 'list', list: this.getTypeLabels() }
-		},
-		page: {
-			headerText: mw.message( 'unifiedtaskoverview-mytasks-column-page' ).text(),
-			type: 'url',
-			urlProperty: 'url',
-			sortable: true,
-			filter: { type: 'text' }
-		},
-		namespace: {
-			headerText: mw.message( 'unifiedtaskoverview-mytasks-column-namespace' ).text(),
-			type: 'text',
-			sortable: true,
-			filter: { type: 'list', list: this.getNamespaces() }
-		},
-		description: {
-			headerText: mw.message( 'unifiedtaskoverview-mytasks-column-description' ).text(),
-			type: 'text',
-			maxLabelLength: 100
-		}
-	};
+	const columns = {};
 
 	const instances = this.getInstances();
 	if ( instances.length > 0 ) {
@@ -103,6 +81,32 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeColumns = function () {
 			}
 		};
 	}
+
+	columns.namespace = {
+		headerText: mw.message( 'unifiedtaskoverview-mytasks-column-namespace' ).text(),
+		type: 'text',
+		sortable: true,
+		hidden: true,
+		filter: { type: 'list', list: this.getNamespaces() }
+	};
+	columns.page = {
+		headerText: mw.message( 'unifiedtaskoverview-mytasks-column-page' ).text(),
+		type: 'url',
+		urlProperty: 'url',
+		sortable: true,
+		filter: { type: 'text' }
+	};
+	columns.description = {
+		headerText: mw.message( 'unifiedtaskoverview-mytasks-column-description' ).text(),
+		type: 'text',
+		maxLabelLength: 100
+	};
+	columns.taskType = {
+		headerText: mw.message( 'unifiedtaskoverview-mytasks-column-type' ).text(),
+		type: 'text',
+		sortable: true,
+		filter: { type: 'list', list: this.getTypeLabels() }
+	};
 
 	return columns;
 };
@@ -160,7 +164,7 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeDescription = function ( it
 	if ( item.subheader ) {
 		parts.push( this.toPlainText( item.subheader ) );
 	}
-	if ( item.body ) {
+	if ( item.body && !this.headerIsTask( item ) ) {
 		parts.push( this.toPlainText( item.body ) );
 	}
 
@@ -173,6 +177,34 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeDescription = function ( it
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.headerIsTask = function ( item ) {
 	return item.type.indexOf( TASK_TYPE ) === 0;
+};
+
+/**
+ * @param {string} type Registered type of a task, e.g. "workflows-activity-user_vote"
+ * @return {string|null} Type key ("workflow", "task", "readconfirmation") or null for an
+ *  unknown type
+ */
+ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getTypeKey = function ( type ) {
+	for ( let i = 0; i < TYPE_LABELS.length; i++ ) {
+		if ( type.indexOf( TYPE_LABELS[ i ].prefix ) === 0 ) {
+			return TYPE_LABELS[ i ].key;
+		}
+	}
+
+	return null;
+};
+
+/**
+ * @param {Object} item
+ * @return {boolean} Whether the task passes the type restriction set on the tag
+ */
+ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.matchesType = function ( item ) {
+	if ( !this.types.length ) {
+		return true;
+	}
+
+	// eslint-disable-next-line es-x/no-array-prototype-includes
+	return this.types.includes( this.getTypeKey( item.type ) );
 };
 
 /**

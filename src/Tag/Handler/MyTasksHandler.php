@@ -16,6 +16,13 @@ class MyTasksHandler implements ITagHandler {
 	 * @inheritDoc
 	 */
 	public function getRenderedContent( string $input, array $params, Parser $parser, PPFrame $frame ): string {
-		return Html::element( 'div', [ 'class' => 'uto-mytasks' ] );
+		$attribs = [ 'class' => 'uto-mytasks' ];
+
+		$types = array_filter( (array)( $params['types'] ?? [] ) );
+		if ( $types ) {
+			$attribs['data-types'] = implode( ',', $types );
+		}
+
+		return Html::element( 'div', $attribs );
 	}
 }
