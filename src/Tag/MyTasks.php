@@ -5,17 +5,25 @@ namespace MediaWiki\Extension\UnifiedTaskOverview\Tag;
 use MediaWiki\Extension\UnifiedTaskOverview\Tag\Handler\MyTasksHandler;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MWStake\MediaWiki\Component\FormEngine\StandaloneFormSpecification;
 use MWStake\MediaWiki\Component\GenericTagHandler\ClientTagSpecification;
 use MWStake\MediaWiki\Component\GenericTagHandler\GenericTag;
 use MWStake\MediaWiki\Component\GenericTagHandler\ITagHandler;
 use MWStake\MediaWiki\Component\GenericTagHandler\MarkerType;
+use MWStake\MediaWiki\Component\InputProcessor\Processor\KeywordListValue;
 
 /**
- * Lists all tasks (workflows, simple tasks, read confirmations, ...) the current user
- * is assigned to. The tag takes no attributes - it always lists all tasks, from all
- * namespaces and all wikis.
+ * Lists the open tasks (workflows, simple tasks, read confirmations, ...) the current
+ * user is assigned to, from all namespaces and all wikis. The optional "types" attribute
+ * restricts the list to the given task types.
  */
 class MyTasks extends GenericTag {
+
+	private const TYPES = [
+		'workflow' => 'unifiedtaskoverview-mytasks-type-workflows',
+		'task' => 'unifiedtaskoverview-mytasks-type-tasks',
+		'readconfirmation' => 'unifiedtaskoverview-mytasks-type-readconfirmation',
+	];
 
 	/**
 	 * @inheritDoc
@@ -56,7 +64,12 @@ class MyTasks extends GenericTag {
 	 * @inheritDoc
 	 */
 	public function getParamDefinition(): ?array {
-		return [];
+		return [
+			'types' => ( new KeywordListValue() )
+				->setKeywords( array_keys( self::TYPES ) )
+				->setListSeparator( ',' )
+				->setDefaultValue( [] ),
+		];
 	}
 
 	/**
@@ -84,15 +97,34 @@ class MyTasks extends GenericTag {
 	}
 
 	/**
-	 * No form specification: the tag is inserted directly, there is nothing to configure.
+	 * The inspector lets editors pick which task types the list should show.
 	 *
 	 * @inheritDoc
 	 */
 	public function getClientTagSpecification(): ClientTagSpecification|null {
+		$formSpec = new StandaloneFormSpecification();
+		$formSpec->setItems( [
+			[
+				'type' => 'menutag_multiselect',
+				'name' => 'types',
+				'labelAlign' => 'top',
+				'label' => Message::newFromKey( 'unifiedtaskoverview-mytasks-attr-types-label' )->text(),
+				'help' => Message::newFromKey( 'unifiedtaskoverview-mytasks-attr-types-help' )->text(),
+				'options' => array_map( static function ( string $key, string $msgKey ): array {
+					return [
+						'data' => $key,
+						'label' => Message::newFromKey( $msgKey )->text(),
+					];
+				}, array_keys( self::TYPES ), array_values( self::TYPES ) ),
+				'widget_allowArbitrary' => false,
+				'widget_$overlay' => true,
+			],
+		] );
+
 		return new ClientTagSpecification(
 			'MyTasks',
 			Message::newFromKey( 'unifiedtaskoverview-mytasks-desc' ),
-			null,
+			$formSpec,
 			Message::newFromKey( 'unifiedtaskoverview-mytasks-title' ),
 			'mytasks'
 		);

@@ -19,7 +19,13 @@ read confirmations and any other type registered in `TaskDescriptorRegistry` - f
 namespaces and, in a wiki farm, from all instances.
 
     <mytasks />
+    <mytasks types="workflow,task" />
 
-The tag has no attributes, it is inserted as is. The list shows the type of the task, the
-task itself, its description and the wiki it originates from, the latter marked with the
-color of that instance. Sorting and filtering are available per column.
+The optional `types` attribute restricts the list to the given task types (`workflow`,
+`task`, `readconfirmation`); left empty, all types are shown. The inspector offers the
+same choice through a multiselect field.
+
+The list shows, in this order, the wiki a task originates from (marked with the color of
+that instance), its namespace, the page it belongs to, its description and its type.
+Sorting and filtering are available per column; the namespace column is hidden by default
+and can be switched back on through the column menu.
