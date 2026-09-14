@@ -55,7 +55,7 @@ ext.unifiedTaskOverview.ui.TileListWidget.prototype.onSearch = function ( value 
 			tile.taskData.subheader,
 			tile.taskData.body
 		].join( ' ' ).toLowerCase();
-		// eslint-disable-next-line es-x/no-array-prototype-includes
+
 		tile.toggle( text.includes( search ) );
 	} );
 };

@@ -203,7 +203,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.matchesType = function ( item )
 		return true;
 	}
 
-	// eslint-disable-next-line es-x/no-array-prototype-includes
 	return this.types.includes( this.getTypeKey( item.type ) );
 };
 
@@ -268,7 +267,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getTypeLabels = function () {
 	const labels = [];
 	this.items.forEach( ( item ) => {
 		const label = this.getTypeLabel( item.type );
-		// eslint-disable-next-line es-x/no-array-prototype-includes
 		if ( label && !labels.includes( label ) ) {
 			labels.push( label );
 		}
@@ -284,7 +282,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getNamespaces = function () {
 	const namespaces = [];
 	this.items.forEach( ( item ) => {
 		const name = item.namespace || '';
-		// eslint-disable-next-line es-x/no-array-prototype-includes
 		if ( name && !namespaces.includes( name ) ) {
 			namespaces.push( name );
 		}

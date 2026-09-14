@@ -27,7 +27,6 @@ function loadRLModules( data ) {
 	const modules = [];
 	data.forEach( ( item ) => {
 		item.RLmodules.forEach( ( module ) => {
-			// eslint-disable-next-line es-x/no-array-prototype-includes
 			if ( !modules.includes( module ) ) {
 				modules.push( module );
 			}
