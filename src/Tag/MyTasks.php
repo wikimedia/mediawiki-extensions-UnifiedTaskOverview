@@ -10,19 +10,18 @@ use MWStake\MediaWiki\Component\GenericTagHandler\ClientTagSpecification;
 use MWStake\MediaWiki\Component\GenericTagHandler\GenericTag;
 use MWStake\MediaWiki\Component\GenericTagHandler\ITagHandler;
 use MWStake\MediaWiki\Component\GenericTagHandler\MarkerType;
-use MWStake\MediaWiki\Component\InputProcessor\Processor\KeywordListValue;
+use MWStake\MediaWiki\Component\InputProcessor\Processor\KeywordValue;
 
 /**
- * Lists the open tasks (workflows, simple tasks, read confirmations, ...) the current
- * user is assigned to, from all namespaces and all wikis. The optional "types" attribute
- * restricts the list to the given task types.
+ * Lists the open tasks of one type the current user is assigned to, from all namespaces
+ * and all wikis. Which type is chosen by the droplet the tag is inserted with.
  */
 class MyTasks extends GenericTag {
 
-	private const TYPES = [
-		'workflow' => 'unifiedtaskoverview-mytasks-type-workflows',
-		'task' => 'unifiedtaskoverview-mytasks-type-tasks',
-		'readconfirmation' => 'unifiedtaskoverview-mytasks-type-readconfirmation',
+	public const TYPES = [
+		'task' => 'simple-tasks-task',
+		'workflow' => 'workflows-activity-',
+		'readconfirmation' => 'page-read-confirmation',
 	];
 
 	/**
@@ -65,10 +64,9 @@ class MyTasks extends GenericTag {
 	 */
 	public function getParamDefinition(): ?array {
 		return [
-			'types' => ( new KeywordListValue() )
+			'type' => ( new KeywordValue() )
 				->setKeywords( array_keys( self::TYPES ) )
-				->setListSeparator( ',' )
-				->setDefaultValue( [] ),
+				->setDefaultValue( 'task' ),
 		];
 	}
 
@@ -97,7 +95,8 @@ class MyTasks extends GenericTag {
 	}
 
 	/**
-	 * The inspector lets editors pick which task types the list should show.
+	 * The droplets insert the tag for a type of task each, and the inspector lets
+	 * editors pick a different one afterwards.
 	 *
 	 * @inheritDoc
 	 */
@@ -105,18 +104,20 @@ class MyTasks extends GenericTag {
 		$formSpec = new StandaloneFormSpecification();
 		$formSpec->setItems( [
 			[
-				'type' => 'menutag_multiselect',
-				'name' => 'types',
-				'labelAlign' => 'top',
-				'label' => Message::newFromKey( 'unifiedtaskoverview-mytasks-attr-types-label' )->text(),
-				'help' => Message::newFromKey( 'unifiedtaskoverview-mytasks-attr-types-help' )->text(),
-				'options' => array_map( static function ( string $key, string $msgKey ): array {
+				'type' => 'dropdown',
+				'name' => 'type',
+				'label' => Message::newFromKey( 'unifiedtaskoverview-mytasks-attr-type-label' )->text(),
+				'value' => 'task',
+				'options' => array_map( static function ( string $key ): array {
+					// The following messages are used here:
+					// * unifiedtaskoverview-mytasks-type-task
+					// * unifiedtaskoverview-mytasks-type-workflow
+					// * unifiedtaskoverview-mytasks-type-readconfirmation
 					return [
 						'data' => $key,
-						'label' => Message::newFromKey( $msgKey )->text(),
+						'label' => Message::newFromKey( "unifiedtaskoverview-mytasks-type-$key" )->text(),
 					];
-				}, array_keys( self::TYPES ), array_values( self::TYPES ) ),
-				'widget_allowArbitrary' => false,
+				}, array_keys( self::TYPES ) ),
 				'widget_$overlay' => true,
 			],
 		] );
@@ -125,8 +126,7 @@ class MyTasks extends GenericTag {
 			'MyTasks',
 			Message::newFromKey( 'unifiedtaskoverview-mytasks-desc' ),
 			$formSpec,
-			Message::newFromKey( 'unifiedtaskoverview-mytasks-title' ),
-			'mytasks'
+			Message::newFromKey( 'unifiedtaskoverview-mytasks-title' )
 		);
 	}
 }

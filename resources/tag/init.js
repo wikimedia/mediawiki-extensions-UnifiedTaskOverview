@@ -67,13 +67,9 @@ $( () => {
 		tasks = tasks || [];
 		loadTaskModules( tasks );
 		$containers.each( ( index, element ) => {
-			const types = ( $( element ).attr( 'data-types' ) || '' )
-				.split( ',' )
-				.map( ( type ) => type.trim() )
-				.filter( ( type ) => type !== '' );
 			const grid = new ext.unifiedTaskOverview.ui.MyTasksGrid( {
 				items: tasks,
-				types: types
+				type: $( element ).attr( 'data-type' ) || 'task'
 			} );
 			$( element ).append( grid.$element );
 		} );

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\UnifiedTaskOverview\Tag\Handler;
 
+use MediaWiki\Extension\UnifiedTaskOverview\Tag\MyTasks;
 use MediaWiki\Html\Html;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
@@ -11,18 +12,19 @@ class MyTasksHandler implements ITagHandler {
 
 	/**
 	 * The list itself is built on the client, from the tasks of the current user, so
-	 * only the container is rendered here.
+	 * only the container is rendered here - with the type of task it is to show.
 	 *
 	 * @inheritDoc
 	 */
 	public function getRenderedContent( string $input, array $params, Parser $parser, PPFrame $frame ): string {
-		$attribs = [ 'class' => 'uto-mytasks' ];
-
-		$types = array_filter( (array)( $params['types'] ?? [] ) );
-		if ( $types ) {
-			$attribs['data-types'] = implode( ',', $types );
+		$type = $params['type'] ?? 'task';
+		if ( !isset( MyTasks::TYPES[$type] ) ) {
+			$type = 'task';
 		}
 
-		return Html::element( 'div', $attribs );
+		return Html::element( 'div', [
+			'class' => 'uto-mytasks',
+			'data-type' => $type,
+		] );
 	}
 }
