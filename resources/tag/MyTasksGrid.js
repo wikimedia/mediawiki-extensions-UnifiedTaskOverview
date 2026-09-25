@@ -3,40 +3,32 @@ ext.unifiedTaskOverview = ext.unifiedTaskOverview || {};
 ext.unifiedTaskOverview.ui = ext.unifiedTaskOverview.ui || {};
 
 /**
- * Type of the tasks of SimpleTasks, the only ones headed by the task instead of the page.
+ * Prefix the tasks of each type are registered with. The list of the REST endpoint
+ * holds every kind of task, so each list keeps the ones of its own type only.
  *
- * @type {string}
+ * Kept in step with MyTasks::TYPES.
+ *
+ * @type {Object}
  */
-const TASK_TYPE = 'simple-tasks-task';
+const TYPE_PREFIXES = {
+	task: 'simple-tasks-task',
+	workflow: 'workflows-activity-',
+	readconfirmation: 'page-read-confirmation'
+};
 
 /**
- * Labels for the known task types. Types are registered with a prefix, so the longest
- * matching prefix wins. Types of other extensions fall back to their technical key.
- *
- * The "key" matches the values of the tag's "types" attribute, set through the inspector.
- *
- * @type {Array}
- */
-const TYPE_LABELS = [
-	{ key: 'workflow', prefix: 'workflows-activity-', message: 'unifiedtaskoverview-mytasks-type-workflows' },
-	{ key: 'task', prefix: TASK_TYPE, message: 'unifiedtaskoverview-mytasks-type-tasks' },
-	{ key: 'readconfirmation', prefix: 'page-read-confirmation', message: 'unifiedtaskoverview-mytasks-type-readconfirmation' }
-];
-
-/**
- * List of all tasks of the current user, shown by the <mytasks> tag.
+ * List of the open tasks of one type of the current user, shown by the <mytasks> tag.
  *
  * @param {Object} cfg Config, "items" holds the tasks as delivered by the
- *  "unifiedtaskoverview/list" REST endpoint, "types" the task type keys the list is
- *  restricted to (empty: show all types)
+ *  "unifiedtaskoverview/list" REST endpoint, "type" the type of task to show
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid = function ( cfg ) {
 	cfg = Object.assign( { padded: true, expanded: false }, cfg || {} );
 
 	ext.unifiedTaskOverview.ui.MyTasksGrid.parent.call( this, cfg );
 
-	this.types = cfg.types || [];
-	this.items = ( cfg.items || [] ).filter( ( item ) => this.matchesType( item ) );
+	this.type = cfg.type || 'task';
+	this.items = ( cfg.items || [] ).filter( ( item ) => this.isOfType( item ) );
 	this.$element.addClass( 'uto-mytasks-grid' );
 
 	if ( this.items.length === 0 ) {
@@ -101,12 +93,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeColumns = function () {
 		type: 'text',
 		maxLabelLength: 100
 	};
-	columns.taskType = {
-		headerText: mw.message( 'unifiedtaskoverview-mytasks-column-type' ).text(),
-		type: 'text',
-		sortable: true,
-		filter: { type: 'list', list: this.getTypeLabels() }
-	};
 
 	return columns;
 };
@@ -120,7 +106,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeRows = function () {
 	return items.map( ( item ) => {
 		const source = item.source || {};
 		return {
-			taskType: this.getTypeLabel( item.type ),
 			page: this.getPageLabel( item ),
 			namespace: item.namespace || '',
 			url: item.url,
@@ -141,7 +126,7 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeRows = function () {
  * @return {string}
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getPageLabel = function ( item ) {
-	if ( this.headerIsTask( item ) ) {
+	if ( this.headerIsTask() ) {
 		return item.page_name || item.page_title || '';
 	}
 
@@ -150,21 +135,21 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getPageLabel = function ( item 
 
 /**
  * Description of a task: the task itself, if the header does not already name it, its
- * subheader ("Read confirmation required", the workflow name, the due date, ...) and
- * the details of the task, if it provides any.
+ * subheader ("Read confirmation required", the due date, ...) and the details of the
+ * task, if it provides any.
  *
  * @param {Object} item
  * @return {string}
  */
 ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeDescription = function ( item ) {
 	const parts = [];
-	if ( this.headerIsTask( item ) ) {
+	if ( this.headerIsTask() ) {
 		parts.push( this.toPlainText( item.header ) );
 	}
 	if ( item.subheader ) {
 		parts.push( this.toPlainText( item.subheader ) );
 	}
-	if ( item.body && !this.headerIsTask( item ) ) {
+	if ( item.body && !this.headerIsTask() ) {
 		parts.push( this.toPlainText( item.body ) );
 	}
 
@@ -172,39 +157,20 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeDescription = function ( it
 };
 
 /**
- * @param {Object} item
- * @return {boolean} Whether the header of the task names the task and not its page
+ * @return {boolean} Whether the header of the tasks names the task and not its page
  */
-ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.headerIsTask = function ( item ) {
-	return item.type.indexOf( TASK_TYPE ) === 0;
-};
-
-/**
- * @param {string} type Registered type of a task, e.g. "workflows-activity-user_vote"
- * @return {string|null} Type key ("workflow", "task", "readconfirmation") or null for an
- *  unknown type
- */
-ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getTypeKey = function ( type ) {
-	for ( let i = 0; i < TYPE_LABELS.length; i++ ) {
-		if ( type.indexOf( TYPE_LABELS[ i ].prefix ) === 0 ) {
-			return TYPE_LABELS[ i ].key;
-		}
-	}
-
-	return null;
+ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.headerIsTask = function () {
+	return this.type === 'task';
 };
 
 /**
  * @param {Object} item
- * @return {boolean} Whether the task passes the type restriction set on the tag
+ * @return {boolean} Whether the task is of the type the list shows
  */
-ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.matchesType = function ( item ) {
-	if ( !this.types.length ) {
-		return true;
-	}
+ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.isOfType = function ( item ) {
+	const prefix = TYPE_PREFIXES[ this.type ];
 
-	// eslint-disable-next-line es-x/no-array-prototype-includes
-	return this.types.includes( this.getTypeKey( item.type ) );
+	return !!prefix && item.type.indexOf( prefix ) === 0;
 };
 
 /**
@@ -241,40 +207,6 @@ ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.makeWikiBadge = function ( name
 	}
 
 	return $fallback;
-};
-
-/**
- * @param {string} type Registered type of a task, e.g. "workflows-activity-user_vote"
- * @return {string}
- */
-ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getTypeLabel = function ( type ) {
-	for ( let i = 0; i < TYPE_LABELS.length; i++ ) {
-		if ( type.indexOf( TYPE_LABELS[ i ].prefix ) === 0 ) {
-			// The following messages are used here:
-			// * unifiedtaskoverview-mytasks-type-workflows
-			// * unifiedtaskoverview-mytasks-type-tasks
-			// * unifiedtaskoverview-mytasks-type-readconfirmation
-			return mw.message( TYPE_LABELS[ i ].message ).text();
-		}
-	}
-
-	return type;
-};
-
-/**
- * @return {Array} Distinct task type labels, for the type filter
- */
-ext.unifiedTaskOverview.ui.MyTasksGrid.prototype.getTypeLabels = function () {
-	const labels = [];
-	this.items.forEach( ( item ) => {
-		const label = this.getTypeLabel( item.type );
-		// eslint-disable-next-line es-x/no-array-prototype-includes
-		if ( label && !labels.includes( label ) ) {
-			labels.push( label );
-		}
-	} );
-
-	return labels;
 };
 
 /**

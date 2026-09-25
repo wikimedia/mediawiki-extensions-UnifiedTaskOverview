@@ -25,7 +25,12 @@
 		"ContentDroplets": {
 			"Droplets": {
 				"mytasks": {
-					"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\ContentDroplets\\MyTasksDroplet"
+					"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\ContentDroplets\\MyTasksDroplet",
+					"args": [ "task" ]
+				},
+				"mytasks-readconfirmation": {
+					"class": "\\MediaWiki\\Extension\\UnifiedTaskOverview\\ContentDroplets\\MyTasksDroplet",
+					"args": [ "readconfirmation" ]
 				}
 			}
 		}
@@ -75,14 +80,10 @@
 				"unifiedtaskoverview-mytasks-empty",
 				"unifiedtaskoverview-mytasks-anon",
 				"unifiedtaskoverview-mytasks-error",
-				"unifiedtaskoverview-mytasks-column-type",
 				"unifiedtaskoverview-mytasks-column-page",
 				"unifiedtaskoverview-mytasks-column-namespace",
 				"unifiedtaskoverview-mytasks-column-description",
-				"unifiedtaskoverview-mytasks-column-instance",
-				"unifiedtaskoverview-mytasks-type-workflows",
-				"unifiedtaskoverview-mytasks-type-tasks",
-				"unifiedtaskoverview-mytasks-type-readconfirmation"
+				"unifiedtaskoverview-mytasks-column-instance"
 			],
 			"dependencies": [
 				"ext.oOJSPlus.data",

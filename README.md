@@ -14,18 +14,19 @@ Add
 to your `LocalSettings.php` or the appropriate `settings.d/` file.
 
 ## The `<mytasks />` tag
-Lists all tasks the current user is assigned to - workflow activities, simple tasks,
-read confirmations and any other type registered in `TaskDescriptorRegistry` - from all
-namespaces and, in a wiki farm, from all instances.
+Lists the open tasks of one type the current user is assigned to, from all namespaces and
+from all instances.
 
     <mytasks />
-    <mytasks types="workflow,task" />
+    <mytasks type="readconfirmation" />
 
-The optional `types` attribute restricts the list to the given task types (`workflow`,
-`task`, `readconfirmation`); left empty, all types are shown. The inspector offers the
-same choice through a multiselect field.
+The `type` attribute names the kind of task the list shows: `task` for the tasks of
+SimpleTasks (the default), `readconfirmation` for the read confirmations of
+PageReadConfirmations, `workflow` for the activities of Workflows. Every type is offered
+as a droplet of its own, so editors pick the list they want when inserting it; the
+inspector of the tag offers the same choice afterwards.
 
 The list shows, in this order, the wiki a task originates from (marked with the color of
-that instance), its namespace, the page it belongs to, its description and its type.
-Sorting and filtering are available per column; the namespace column is hidden by default
-and can be switched back on through the column menu.
+that instance), its namespace, the page it belongs to and its description. Sorting and
+filtering are available per column; the namespace column is hidden by default and can be
+switched back on through the column menu.

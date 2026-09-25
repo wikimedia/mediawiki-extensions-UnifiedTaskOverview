@@ -1,5 +1,28 @@
 @import 'mediawiki.skin.variables.less';
 
+.droplet .icon-droplet.droplet-mytasks-task {
+	background-image: url( ../images/contentdroplets-open-tasks-icon.svg );
+}
+
+.droplet .icon-droplet.droplet-mytasks-readconfirmation {
+	background-image: url( ../images/contentdroplets-open-readconfirmation-icon.svg );
+}
+
+.ve-active .mwstake-components-generictaghandler-tag-mytasks {
+	width: 100%;
+	height: 250px;
+	overflow: hidden;
+	background-color: #fafafc;
+	background-image: url( ../images/contentdroplets-open-tasks-icon-greyscale.svg );
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.ve-active .mwstake-components-generictaghandler-tag-mytasks[ data-mwstake-components-generictaghandler-arg-type='readconfirmation' ] {
+	background-image: url( ../images/contentdroplets-open-readconfirmation-icon-greyscale.svg );
+}
+
 .ve-active .mwstake-components-generictaghandler-tag-mytasks > * {
 	visibility: hidden;
 }
