@@ -14,5 +14,14 @@
 	"unifiedtaskoverview-no-login-text": "작업을 보려면 로그인하세요",
 	"unifiedtaskoverview-filter-all": "모든 것",
 	"unifiedtaskoverview-filter-wikis-section-label": "위키",
-	"unifiedtaskoverview-mytasks-title": "내 열린 업무"
+	"unifiedtaskoverview-mytasks-title": "내 열린 업무",
+	"unifiedtaskoverview-mytasks-attr-types-label": "작업 유형",
+	"unifiedtaskoverview-mytasks-attr-types-help": "다음 작업 유형으로 목록을 제한합니다. 모든 유형을 표시하려면 비워 두세요.",
+	"unifiedtaskoverview-mytasks-column-type": "유형",
+	"unifiedtaskoverview-mytasks-column-page": "문서",
+	"unifiedtaskoverview-mytasks-column-namespace": "이름공간",
+	"unifiedtaskoverview-mytasks-column-description": "설명",
+	"unifiedtaskoverview-mytasks-column-instance": "위키",
+	"unifiedtaskoverview-mytasks-type-workflows": "워크플로",
+	"unifiedtaskoverview-mytasks-type-tasks": "작업"
 }
