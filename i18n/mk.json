@@ -17,14 +17,10 @@
 	"unifiedtaskoverview-mytasks-empty": "Нема задачи за приказ.",
 	"unifiedtaskoverview-mytasks-anon": "Најавете се за да ги видите вашите задачи.",
 	"unifiedtaskoverview-mytasks-error": "Задачите не можат да се вчитаат.",
-	"unifiedtaskoverview-mytasks-attr-types-label": "Видови задачи",
-	"unifiedtaskoverview-mytasks-attr-types-help": "Го ограничува списокот на следниве видови задачи. Оставете го празно за да се прикажат сите видови.",
-	"unifiedtaskoverview-mytasks-column-type": "Вид",
 	"unifiedtaskoverview-mytasks-column-page": "Страница",
 	"unifiedtaskoverview-mytasks-column-namespace": "Именски простор",
 	"unifiedtaskoverview-mytasks-column-description": "Опис",
 	"unifiedtaskoverview-mytasks-column-instance": "Вики",
-	"unifiedtaskoverview-mytasks-type-workflows": "Работен тек",
-	"unifiedtaskoverview-mytasks-type-tasks": "Задача",
+	"unifiedtaskoverview-mytasks-attr-type-label": "Вид",
 	"unifiedtaskoverview-mytasks-type-readconfirmation": "Потврда на читање"
 }
