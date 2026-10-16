@@ -20,5 +20,7 @@
 	"unifiedtaskoverview-mytasks-column-namespace": "Nummraum",
 	"unifiedtaskoverview-mytasks-column-description": "Beschreiwung",
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
-	"unifiedtaskoverview-mytasks-type-tasks": "Aufgab"
+	"unifiedtaskoverview-mytasks-type-tasks": "Aufgab",
+	"unifiedtaskoverview-mytasks-attr-type-label": "Typ",
+	"unifiedtaskoverview-mytasks-type-task": "Aufgaben"
 }

@@ -13,7 +13,7 @@
 	"unifiedtaskoverview-filter-all": "Wax walba",
 	"unifiedtaskoverview-filter-wikis-section-label": "Wikiyada",
 	"unifiedtaskoverview-mytasks-title": "Hawlaha ii furan",
-	"unifiedtaskoverview-mytasks-desc": "Muuji dhammaan hawlaha isticmaalaha hadda loo xilsaaray.",
+	"unifiedtaskoverview-mytasks-desc": "Waxay muujisaa dhammaan hawlaha furan ee loo xilsaaray isticmaalaha hadda jira.",
 	"unifiedtaskoverview-mytasks-empty": "Ma jiraan hawlo la soo bandhigayo.",
 	"unifiedtaskoverview-mytasks-anon": "Fadlan soo gal si aad u aragto hawlahaaga.",
 	"unifiedtaskoverview-mytasks-error": "Hawlaha lama soo dejin karin.",
@@ -26,5 +26,12 @@
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki-ga",
 	"unifiedtaskoverview-mytasks-type-workflows": "Workflow",
 	"unifiedtaskoverview-mytasks-type-tasks": "Hawsha",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "Xaqiijinta akhriska"
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Xaqiijinnada akhriska",
+	"unifiedtaskoverview-droplet-mytasks-task": "Hawlaha ii furan",
+	"unifiedtaskoverview-droplet-mytasks-task-desc": "Waxay muujisaa dhammaan hawlaha furan ee loo xilsaaray isticmaalaha hadda jira.",
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation": "Xaqiijinnada akhriska ee ii furan",
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation-desc": "Waxay muujisaa dhammaan xaqiijinnada akhriska ee furan ee loo xilsaaray isticmaalaha hadda jira.",
+	"unifiedtaskoverview-mytasks-attr-type-label": "Nooca",
+	"unifiedtaskoverview-mytasks-type-task": "Hawlaha",
+	"unifiedtaskoverview-mytasks-type-workflow": "Habraacyada"
 }

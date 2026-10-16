@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Suleiman the Magnificent Television",
 			"Tensama0415",
-			"Ykhwong",
-			"Suleiman the Magnificent Television"
+			"Ykhwong"
 		]
 	},
 	"unifiedtaskoverview-desc": "사용자의 작업 개요를 보여주는 특수 문서를 제공합니다",
@@ -23,5 +23,6 @@
 	"unifiedtaskoverview-mytasks-column-description": "설명",
 	"unifiedtaskoverview-mytasks-column-instance": "위키",
 	"unifiedtaskoverview-mytasks-type-workflows": "워크플로",
-	"unifiedtaskoverview-mytasks-type-tasks": "작업"
+	"unifiedtaskoverview-mytasks-type-tasks": "작업",
+	"unifiedtaskoverview-mytasks-attr-type-label": "유형"
 }

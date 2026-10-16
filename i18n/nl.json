@@ -27,5 +27,6 @@
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
 	"unifiedtaskoverview-mytasks-type-workflows": "Werkstroom",
 	"unifiedtaskoverview-mytasks-type-tasks": "Taak",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestiging"
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestiging",
+	"unifiedtaskoverview-mytasks-attr-type-label": "Type"
 }
