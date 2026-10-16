@@ -13,7 +13,7 @@
 	"unifiedtaskoverview-filter-all": "Сè",
 	"unifiedtaskoverview-filter-wikis-section-label": "Викија",
 	"unifiedtaskoverview-mytasks-title": "Мои отворени задачи",
-	"unifiedtaskoverview-mytasks-desc": "Прикажи ги сите задачи доделени на тековниот корисник.",
+	"unifiedtaskoverview-mytasks-desc": "Ги прикажува сите отворени задачи доделени на тековниот корисник.",
 	"unifiedtaskoverview-mytasks-empty": "Нема задачи за приказ.",
 	"unifiedtaskoverview-mytasks-anon": "Најавете се за да ги видите вашите задачи.",
 	"unifiedtaskoverview-mytasks-error": "Задачите не можат да се вчитаат.",
@@ -21,6 +21,12 @@
 	"unifiedtaskoverview-mytasks-column-namespace": "Именски простор",
 	"unifiedtaskoverview-mytasks-column-description": "Опис",
 	"unifiedtaskoverview-mytasks-column-instance": "Вики",
+	"unifiedtaskoverview-droplet-mytasks-task": "Мои отворени задачи",
+	"unifiedtaskoverview-droplet-mytasks-task-desc": "Ги прикажува сите отворени задачи доделени на тековниот корисник.",
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation": "Мои отворени потврди за прочитаност",
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation-desc": "Ги прикажува сите отворени потврди за прочитаност доделени на тековниот корисник.",
 	"unifiedtaskoverview-mytasks-attr-type-label": "Вид",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "Потврда на читање"
+	"unifiedtaskoverview-mytasks-type-task": "Задачи",
+	"unifiedtaskoverview-mytasks-type-workflow": "Работни текови",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Потврди за прочитаност"
 }
