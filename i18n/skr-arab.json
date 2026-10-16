@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki"
+		]
+	},
+	"unifiedtaskoverview-filter-all": "ہر شئے",
+	"unifiedtaskoverview-filter-wikis-section-label": "وکیاں",
+	"unifiedtaskoverview-mytasks-column-page": "ورقہ",
+	"unifiedtaskoverview-mytasks-column-namespace": "ناں جاہ",
+	"unifiedtaskoverview-mytasks-column-description": "تفصیل",
+	"unifiedtaskoverview-mytasks-column-instance": "وکی",
+	"unifiedtaskoverview-mytasks-attr-type-label": "قسم"
+}
