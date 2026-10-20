@@ -17,13 +17,10 @@
 	"unifiedtaskoverview-mytasks-empty": "ښودلو لپاره هېڅ کاردندې نشته.",
 	"unifiedtaskoverview-mytasks-anon": "د خپلو کاردندو کتلو لپاره مهرباني وکړئ ننوځئ.",
 	"unifiedtaskoverview-mytasks-error": "کاردندې نشي راپورته‌کېدی.",
-	"unifiedtaskoverview-mytasks-column-type": "ډول",
 	"unifiedtaskoverview-mytasks-column-page": "مخ",
 	"unifiedtaskoverview-mytasks-column-namespace": "نوم‌تشيال",
 	"unifiedtaskoverview-mytasks-column-description": "څرگنداوی",
 	"unifiedtaskoverview-mytasks-column-instance": "ويکي",
-	"unifiedtaskoverview-mytasks-type-workflows": "کاري‌بهير",
-	"unifiedtaskoverview-mytasks-type-tasks": "کاردنده",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "د لوستلو تاييد",
-	"unifiedtaskoverview-mytasks-attr-type-label": "ډول"
+	"unifiedtaskoverview-mytasks-attr-type-label": "ډول",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "د لوستلو تاييد"
 }
