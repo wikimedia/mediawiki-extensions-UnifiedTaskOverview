@@ -14,7 +14,7 @@
 	"unifiedtaskoverview-filter-all": "Alles",
 	"unifiedtaskoverview-filter-wikis-section-label": "Wiki’s",
 	"unifiedtaskoverview-mytasks-title": "Mijn open taken",
-	"unifiedtaskoverview-mytasks-desc": "Alle taken weergeven die aan de huidige gebruiker zijn toegewezen.",
+	"unifiedtaskoverview-mytasks-desc": "Geeft alle taken weer die aan de huidige gebruiker zijn toegewezen.",
 	"unifiedtaskoverview-mytasks-empty": "Er zijn geen taken om weer te geven.",
 	"unifiedtaskoverview-mytasks-anon": "Meld u aan om uw taken te bekijken.",
 	"unifiedtaskoverview-mytasks-error": "De taken konden niet worden geladen.",
@@ -23,5 +23,9 @@
 	"unifiedtaskoverview-mytasks-column-description": "Beschrijving",
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
 	"unifiedtaskoverview-mytasks-attr-type-label": "Type",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestiging"
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestigingen",
+	"unifiedtaskoverview-droplet-mytasks-task": "Mijn open taken",
+	"unifiedtaskoverview-droplet-mytasks-task-desc": "Geeft alle taken weer die aan de huidige gebruiker zijn toegewezen.",
+	"unifiedtaskoverview-mytasks-type-task": "Taken",
+	"unifiedtaskoverview-mytasks-type-workflow": "Werkstromen"
 }
