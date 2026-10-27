@@ -25,5 +25,8 @@
 	"unifiedtaskoverview-mytasks-type-readconfirmation": "د لوستلو تاييدونې",
 	"unifiedtaskoverview-droplet-mytasks-task": "زما پرانېستې کاردندې",
 	"unifiedtaskoverview-droplet-mytasks-task-desc": "ټولې هغه کاردندې چې اوسني کارن ته سپارل شوې دي، ښکاره کوي.",
-	"unifiedtaskoverview-droplet-mytasks-readconfirmation": "زما پرانېستې لوست تاييدونې"
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation": "زما پرانېستې لوست تاييدونې",
+	"unifiedtaskoverview-droplet-mytasks-readconfirmation-desc": "ټولې هغه پرانېستې لوست تاييدونې چې اوسني کارن ته سپارل شوې دي، ښکاره کوي.",
+	"unifiedtaskoverview-mytasks-type-task": "کاردندې",
+	"unifiedtaskoverview-mytasks-type-workflow": "کاري‌بهيرونه"
 }
