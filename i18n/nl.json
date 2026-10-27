@@ -22,10 +22,10 @@
 	"unifiedtaskoverview-mytasks-column-namespace": "Naamruimte",
 	"unifiedtaskoverview-mytasks-column-description": "Beschrijving",
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
-	"unifiedtaskoverview-mytasks-attr-type-label": "Type",
-	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestigingen",
 	"unifiedtaskoverview-droplet-mytasks-task": "Mijn open taken",
 	"unifiedtaskoverview-droplet-mytasks-task-desc": "Geeft alle taken weer die aan de huidige gebruiker zijn toegewezen.",
+	"unifiedtaskoverview-mytasks-attr-type-label": "Type",
 	"unifiedtaskoverview-mytasks-type-task": "Taken",
-	"unifiedtaskoverview-mytasks-type-workflow": "Werkstromen"
+	"unifiedtaskoverview-mytasks-type-workflow": "Werkstromen",
+	"unifiedtaskoverview-mytasks-type-readconfirmation": "Leesbevestigingen"
 }
