@@ -15,10 +15,10 @@
 	"unifiedtaskoverview-mytasks-title": "Meng oppen Aufgaben",
 	"unifiedtaskoverview-mytasks-anon": "Loggt Iech wgl. an, fir Är Aufgaben ze gesinn.",
 	"unifiedtaskoverview-mytasks-error": "D'Aufgabe konnten net geluede ginn.",
-	"unifiedtaskoverview-mytasks-column-type": "Typ",
 	"unifiedtaskoverview-mytasks-column-page": "Säit",
 	"unifiedtaskoverview-mytasks-column-namespace": "Nummraum",
 	"unifiedtaskoverview-mytasks-column-description": "Beschreiwung",
 	"unifiedtaskoverview-mytasks-column-instance": "Wiki",
-	"unifiedtaskoverview-mytasks-type-tasks": "Aufgab"
+	"unifiedtaskoverview-mytasks-attr-type-label": "Typ",
+	"unifiedtaskoverview-mytasks-type-task": "Aufgaben"
 }
